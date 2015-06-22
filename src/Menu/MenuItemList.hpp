@@ -5,7 +5,10 @@
 class MenuItemList: public MenuItem
 {
 public:
-	MenuItemList(MenuItemTemplate &tem);
+	MenuItemList(
+		const char *label, ID id, Type type,
+		std::vector<std::string> list,
+		std::string def);
 
 	void draw(Window *window, bool cur, int w, int y, int x);
 	void update(int key);

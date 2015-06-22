@@ -1,9 +1,12 @@
 #include "MenuItemList.hpp"
 
-MenuItemList::MenuItemList(MenuItemTemplate &tem):
-	MenuItem(tem),
-	list(tem.list),
-	def(tem.def),
+MenuItemList::MenuItemList(
+	const char *label, ID id, Type type,
+	std::vector<std::string> list,
+	std::string def):
+	MenuItem(label, id, type),
+	list(list),
+	def(def),
 	current(0)
 {
 	for (size_t i = 0; i < list.size(); ++i) {

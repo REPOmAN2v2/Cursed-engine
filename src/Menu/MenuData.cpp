@@ -15,7 +15,7 @@ void MenuData::clear()
 {
 	for (size_t i = 0; i < items.size(); ++i) {
 		if (items[i]) {
-			delete items[i];
+			//delete items[i];
 			items[i] = nullptr;
 		}
 	}
@@ -206,9 +206,7 @@ void MenuData::update()
 
 		case KEY_RIGHT: // fallthrough
 		case KEY_LEFT:
-			if (current && 
-			   (current->type == Type::NUMBER ||
-			    current->type == Type::LIST)) {
+			if (current && current->type != Type::SIMPLE) {
 				current->update(key);
 			}
 		break;

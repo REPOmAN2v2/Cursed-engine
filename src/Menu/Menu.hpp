@@ -10,11 +10,11 @@ public:
 	Menu();
 	~Menu();
 	void createMainMenu();
+	void createPlayMenu();
 	void draw();
 	bool update();
 	void exit();
 private:
-	void createMenu(std::vector<MenuItemTemplate> &itemTemplate);
 	MenuStyle *style;
 	MenuData *data;
 };

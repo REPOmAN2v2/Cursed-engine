@@ -33,36 +33,3 @@ enum class ID {
 	STEP,
 	RESET
 };
-
-struct MenuItemTemplate {
-	const char *name;
-	enum ID id;
-	enum Type type;
-	int min, max, start;
-	std::vector<std::string> list;
-	std::string def;
-
-	MenuItemTemplate(
-		const char *name, 
-		enum ID id, 
-		enum Type type,
-		int min = 0,
-		int max = 0,
-		int start = 0):
-		name(name),id(id),type(type),
-		min(min),max(max),start(start),
-		list({}), def("")
-	{};
-
-
-	MenuItemTemplate(
-		const char *name, 
-		enum ID id, 
-		enum Type type,
-		std::vector<std::string> list,
-		std::string def):
-		name(name),id(id),type(type),
-		min(0),max(0),start(0),
-		list(list), def(def)
-	{};
-};

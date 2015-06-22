@@ -1,42 +1,12 @@
 #include "Menu.hpp"
 #include <vector>
 
-// TODO: move these to a config file (JSON?)
-static std::vector<MenuItemTemplate> mainMenuItems = {
-	MenuItemTemplate("Play", ID::PLAYMENU, Type::SIMPLE),
-	MenuItemTemplate("Settings", ID::SETTINGS, Type::SIMPLE),
-	MenuItemTemplate("Help", ID::HELP, Type::SIMPLE),
-	MenuItemTemplate("Quit", ID::QUIT, Type::SIMPLE)
-};
-
-static std::vector<std::string> simSpeed = {"Slow", "Normal", "Fast"};
-
-static std::vector<MenuItemTemplate> playMenuItems = {
-	MenuItemTemplate("Launch game", ID::PLAY, Type::SIMPLE),
-	MenuItemTemplate("Back", ID::BACK, Type::SIMPLE),
-	MenuItemTemplate(nullptr, ID::NONE, Type::NONE),
-	MenuItemTemplate("Doctors", ID::DOCTORS, Type::NUMBER, 0, 100, 5),
-	MenuItemTemplate("Infected", ID::INFECTED, Type::NUMBER, 0, 100, 8),
-	MenuItemTemplate("Nurses", ID::NURSES, Type::NUMBER, 0, 100, 6),
-	MenuItemTemplate("Soldiers", ID::SOLDIERS, Type::NUMBER, 0, 100, 10),
-	MenuItemTemplate("Lumber", ID::LUMBER, Type::NUMBER, 0, 1000, 50),
-	MenuItemTemplate(nullptr, ID::NONE, Type::NONE),
-	MenuItemTemplate("Sim speed", ID::SPEED, Type::LIST, simSpeed, "Normal"),
-	MenuItemTemplate("Step", ID::STEP, Type::TOGGLE),
-	MenuItemTemplate("Reset", ID::RESET, Type::SIMPLE)
-};
-
 Menu::Menu():data(nullptr)
 {
 	style = new MenuStyle(20, 79);
 }
 
 void Menu::createMainMenu()
-{
-	createMenu(mainMenuItems);
-}
-
-void Menu::createMenu(std::vector<MenuItemTemplate> &itemTemplate)
 {
 	if (data) {
 		delete data;
@@ -46,23 +16,52 @@ void Menu::createMenu(std::vector<MenuItemTemplate> &itemTemplate)
 						style->menu->getW() - 2,
 						1,1);
 
-	for (auto it : itemTemplate) {
-		if (it.name) {
-			MenuItem *item;
+	MenuItem *item;
+	item = new MenuItem("Play", ID::PLAYMENU, Type::SIMPLE);
+	data->addItem(item);
+	item = new MenuItem("Settings", ID::SETTINGS, Type::SIMPLE);
+	data->addItem(item);
+	item = new MenuItem("Help", ID::HELP, Type::SIMPLE);
+	data->addItem(item);
+	item = new MenuItem("Quit", ID::QUIT, Type::SIMPLE);
+	data->addItem(item);
+}
 
-			if (it.type == Type::NUMBER) {
-				item = new MenuItemNumber(it);
-			} else if (it.type == Type::LIST) {
-				item = new MenuItemList(it);
-			} else {
-				item = new MenuItem(it);
-			}
-
-			data->addItem(item);
-		} else {
-			data->addItem(nullptr);
-		}
+void Menu::createPlayMenu()
+{
+	if (data) {
+		delete data;
 	}
+
+	data = new MenuData(style->menu->getH() - 2,
+						style->menu->getW() - 2,
+						1,1);
+
+	static const std::vector<std::string> simSpeed = {"Slow", "Normal", "Fast"};
+
+	MenuItem *item;
+	item = new MenuItem("Launch game", ID::PLAY, Type::SIMPLE);
+	data->addItem(item);
+	item = new MenuItem("Back", ID::BACK, Type::SIMPLE);
+	data->addItem(item);
+	data->addItem(nullptr);
+	item = new MenuItemNumber("Doctors", ID::DOCTORS, Type::NUMBER, 0, 100, 5);
+	data->addItem(item);
+	item = new MenuItemNumber("Infected", ID::INFECTED, Type::NUMBER, 0, 100, 8);
+	data->addItem(item);
+	item = new MenuItemNumber("Nurses", ID::NURSES, Type::NUMBER, 0, 100, 6);
+	data->addItem(item);
+	item = new MenuItemNumber("Soldiers", ID::SOLDIERS, Type::NUMBER, 0, 100, 10);
+	data->addItem(item);
+	item = new MenuItemNumber("Lumber", ID::LUMBER, Type::NUMBER, 0, 1000, 50);
+	data->addItem(item);
+	data->addItem(nullptr);
+	item = new MenuItemList("Sim speed", ID::SPEED, Type::LIST, simSpeed, "Normal");
+	data->addItem(item);
+	item = new MenuItemToggle("Step", ID::STEP, Type::TOGGLE, false);
+	data->addItem(item);
+	item = new MenuItem("Reset", ID::RESET, Type::SIMPLE);
+	data->addItem(item);
 }
 
 Menu::~Menu()
@@ -98,11 +97,11 @@ bool Menu::update()
 		break;
 
 		case ID::PLAYMENU:
-			createMenu(playMenuItems);
+			createPlayMenu();
 		break;
 
 		case ID::BACK:
-			createMenu(mainMenuItems);
+			createMainMenu();
 		break;
 
 		default:

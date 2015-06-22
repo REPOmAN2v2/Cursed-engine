@@ -1,11 +1,13 @@
 #include "MenuItemNumber.hpp"
 
-MenuItemNumber::MenuItemNumber(MenuItemTemplate &tem):
-	MenuItem(tem),
-	min(tem.min),
-	max(tem.max),
-	start(tem.start),
-	current(tem.start)
+MenuItemNumber::MenuItemNumber(
+	const char *label, ID id, Type type,
+	int min, int max, int start):
+	MenuItem(label, id, type),
+	min(min),
+	max(max),
+	start(start),
+	current(start)
 {}
 
 void MenuItemNumber::draw(Window *window, bool cur, int w, int y, int x)

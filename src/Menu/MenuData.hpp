@@ -3,6 +3,7 @@
 #include "window.hpp"
 #include "MenuItemNumber.hpp"
 #include "MenuItemList.hpp"
+#include "MenuItemToggle.hpp"
 #include "MenuItem.hpp"
 #include <vector>
 

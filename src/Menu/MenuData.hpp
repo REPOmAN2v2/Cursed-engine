@@ -2,6 +2,7 @@
 
 #include "window.hpp"
 #include "MenuItemNumber.hpp"
+#include "MenuItemList.hpp"
 #include "MenuItem.hpp"
 #include <vector>
 

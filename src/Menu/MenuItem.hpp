@@ -2,7 +2,6 @@
 
 #include "window.hpp"
 #include "MenuItemTemplates.hpp"
-#include <string>
 
 class MenuItem
 {

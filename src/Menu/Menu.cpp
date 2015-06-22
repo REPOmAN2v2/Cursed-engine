@@ -3,25 +3,27 @@
 
 // TODO: move these to a config file (JSON?)
 static std::vector<MenuItemTemplate> mainMenuItems = {
-	{.name = "Play", .id = ID::PLAYMENU, .type = Type::SIMPLE, .min = 0, .max = 0, .start = 0},
-	{.name = "Settings", .id = ID::SETTINGS, .type = Type::SIMPLE, .min = 0, .max = 0, .start = 0},
-	{.name = "Help", .id = ID::HELP, .type = Type::SIMPLE, .min = 0, .max = 0, .start = 0},
-	{.name = "Quit", .id = ID::QUIT, .type = Type::SIMPLE, .min = 0, .max = 0, .start = 0}
+	MenuItemTemplate("Play", ID::PLAYMENU, Type::SIMPLE),
+	MenuItemTemplate("Settings", ID::SETTINGS, Type::SIMPLE),
+	MenuItemTemplate("Help", ID::HELP, Type::SIMPLE),
+	MenuItemTemplate("Quit", ID::QUIT, Type::SIMPLE)
 };
 
+static std::vector<std::string> simSpeed = {"Slow", "Normal", "Fast"};
+
 static std::vector<MenuItemTemplate> playMenuItems = {
-	{.name = "Launch game", .id = ID::PLAY, .type = Type::SIMPLE, .min = 0, .max = 0, .start = 0},
-	{.name = "Back", .id = ID::BACK, .type = Type::SIMPLE, .min = 0, .max = 0, .start = 0},
-	{.name = nullptr, .id = ID::NONE, .type = Type::NONE, .min = 0, .max = 0, .start = 0},
-	{.name = "Doctors", .id = ID::DOCTORS, .type = Type::NUMBER, .min = 0, .max = 100, .start = 5},
-	{.name = "Infected", .id = ID::INFECTED, .type = Type::NUMBER, .min = 0, .max = 100, .start = 8},
-	{.name = "Nurses", .id = ID::NURSES, .type = Type::NUMBER, .min = 0, .max = 100, .start = 6},
-	{.name = "Soldiers", .id = ID::SOLDIERS, .type = Type::NUMBER, .min = 0, .max = 100, .start = 10},
-	{.name = "Lumber", .id = ID::LUMBER, .type = Type::NUMBER, .min = 0, .max = 1000, .start = 50},
-	{.name = nullptr, .id = ID::NONE, .type = Type::NONE, .min = 0, .max = 0, .start = 0},
-	{.name = "Sim speed", .id = ID::SPEED, .type = Type::TEXT, .min = 0, .max = 0, .start = 0},
-	{.name = "Step", .id = ID::STEP, .type = Type::TOGGLE, .min = 0, .max = 0, .start = 0},
-	{.name = "Reset", .id = ID::RESET, .type = Type::SIMPLE, .min = 0, .max = 0, .start = 0}
+	MenuItemTemplate("Launch game", ID::PLAY, Type::SIMPLE),
+	MenuItemTemplate("Back", ID::BACK, Type::SIMPLE),
+	MenuItemTemplate(nullptr, ID::NONE, Type::NONE),
+	MenuItemTemplate("Doctors", ID::DOCTORS, Type::NUMBER, 0, 100, 5),
+	MenuItemTemplate("Infected", ID::INFECTED, Type::NUMBER, 0, 100, 8),
+	MenuItemTemplate("Nurses", ID::NURSES, Type::NUMBER, 0, 100, 6),
+	MenuItemTemplate("Soldiers", ID::SOLDIERS, Type::NUMBER, 0, 100, 10),
+	MenuItemTemplate("Lumber", ID::LUMBER, Type::NUMBER, 0, 1000, 50),
+	MenuItemTemplate(nullptr, ID::NONE, Type::NONE),
+	MenuItemTemplate("Sim speed", ID::SPEED, Type::LIST, simSpeed, "Normal"),
+	MenuItemTemplate("Step", ID::STEP, Type::TOGGLE),
+	MenuItemTemplate("Reset", ID::RESET, Type::SIMPLE)
 };
 
 Menu::Menu():data(nullptr)
@@ -50,6 +52,8 @@ void Menu::createMenu(std::vector<MenuItemTemplate> &itemTemplate)
 
 			if (it.type == Type::NUMBER) {
 				item = new MenuItemNumber(it);
+			} else if (it.type == Type::LIST) {
+				item = new MenuItemList(it);
 			} else {
 				item = new MenuItem(it);
 			}

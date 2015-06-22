@@ -4,11 +4,13 @@ DATE = $(shell date "+%b%y")
 
 EXE = $(PACKAGE)
 
+CXXFLAGS = -std=c++11
+
 DEBUG ?= 1
 ifeq ($(DEBUG), 1)
-	CXXFLAGS = -Wall -Wextra -g -std=c++11
+	CXXFLAGS += -Wall -Wextra -g
 else
-	CXXFLAGS = -02 -march=native -std=c++11
+	CXXFLAGS += -02 -march=native
 endif
 
 LDFLAGS = -lncurses

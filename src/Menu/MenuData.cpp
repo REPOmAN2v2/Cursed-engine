@@ -206,7 +206,9 @@ void MenuData::update()
 
 		case KEY_RIGHT: // fallthrough
 		case KEY_LEFT:
-			if (current && current->type == Type::NUMBER) {
+			if (current && 
+			   (current->type == Type::NUMBER ||
+			    current->type == Type::LIST)) {
 				current->update(key);
 			}
 		break;

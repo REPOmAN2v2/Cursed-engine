@@ -11,6 +11,7 @@ class MenuData
 {
 public:
 	MenuData(int h, int w, int y, int x);
+	~MenuData();
 	void clear();
 	void addItem(MenuItem *item);
 	void removeItem(ID id);

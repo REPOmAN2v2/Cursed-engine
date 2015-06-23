@@ -11,11 +11,16 @@ MenuData::MenuData(int h, int w, int y, int x):
 	index(0)
 {}
 
+MenuData::~MenuData()
+{
+	clear();
+}
+
 void MenuData::clear()
 {
 	for (size_t i = 0; i < items.size(); ++i) {
 		if (items[i]) {
-			//delete items[i];
+			delete items[i];
 			items[i] = nullptr;
 		}
 	}

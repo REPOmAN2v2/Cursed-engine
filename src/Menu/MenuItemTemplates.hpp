@@ -31,5 +31,8 @@ enum class ID {
 	LUMBER,
 	SPEED,
 	STEP,
-	RESET
+	RESET,
+	//specific to the settings menu
+	WIDTH,
+	HEIGHT
 };

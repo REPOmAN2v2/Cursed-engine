@@ -1,5 +1,6 @@
 #include "Menu.hpp"
 #include <vector>
+#include <climits>
 
 Menu::Menu():data(nullptr)
 {
@@ -64,6 +65,26 @@ void Menu::createPlayMenu()
 	data->addItem(item);
 }
 
+void Menu::createSettingsMenu()
+{
+	if  (data) {
+		delete data;
+	}
+
+	data = new MenuData(style->menu->getH() - 2,
+						style->menu->getW() - 2,
+						1,1);
+
+	MenuItem *item;
+	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, 0, INT_MAX, 79);
+	data->addItem(item);
+	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, 0, INT_MAX, 20);
+	data->addItem(item);
+	data->addItem(nullptr);
+	item = new MenuItem("Back", ID::BACK, Type::SIMPLE);
+	data->addItem(item);
+}
+
 Menu::~Menu()
 {
 	exit();
@@ -100,6 +121,10 @@ bool Menu::update()
 			createPlayMenu();
 		break;
 
+		case ID::SETTINGS:
+			createSettingsMenu();
+		break;
+
 		case ID::BACK:
 			createMainMenu();
 		break;
@@ -109,4 +134,9 @@ bool Menu::update()
 	} 
 
 	return false;
+}
+
+void Menu::resize()
+{
+	//style->menu->resize(y,x);
 }

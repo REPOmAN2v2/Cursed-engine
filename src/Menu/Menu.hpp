@@ -11,9 +11,11 @@ public:
 	~Menu();
 	void createMainMenu();
 	void createPlayMenu();
+	void createSettingsMenu();
 	void draw();
 	bool update();
 	void exit();
+	void resize();
 private:
 	MenuStyle *style;
 	MenuData *data;

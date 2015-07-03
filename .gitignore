@@ -27,5 +27,8 @@
 *.out
 *.app
 
+# External Configuration Files
+.ycm_extra_conf.py
+
 #Folders
 bin/

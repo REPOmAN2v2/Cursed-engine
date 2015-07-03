@@ -1,5 +1,6 @@
 #include "ncurses.hpp"
 #include "Menu/Menu.hpp"
+#include "Lua/ConfigParser.hpp"
 
 int main()
 {

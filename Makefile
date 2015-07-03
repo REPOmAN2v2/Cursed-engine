@@ -13,7 +13,7 @@ else
 	CXXFLAGS += -02 -march=native
 endif
 
-LDFLAGS = -lncurses
+LDFLAGS = -lncurses -llua
 INCLUDES = -I"src/"
 
 CXXFILES = $(shell find src -type f -name '*.cpp')

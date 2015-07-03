@@ -19,7 +19,7 @@ public:
 	{
 		T value;
 		if (exists(var)) {
-			value = getValue<T>(var);
+			value = getValue<T>();
 		} else {
 			value = getDefault<T>();
 		}

@@ -1,10 +1,11 @@
 #include "Menu.hpp"
+#include <Config/Globals.hpp>
 #include <vector>
 #include <climits>
 
 Menu::Menu():data(nullptr)
 {
-	style = new MenuStyle(20, 79);
+	style = new MenuStyle(Globals::Settings::height, Globals::Settings::width);
 }
 
 void Menu::createMainMenu()
@@ -76,9 +77,9 @@ void Menu::createSettingsMenu()
 						1,1);
 
 	MenuItem *item;
-	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, 0, INT_MAX, 79);
+	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, 0, INT_MAX, Globals::Settings::width);
 	data->addItem(item);
-	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, 0, INT_MAX, 20);
+	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, 0, INT_MAX, Globals::Settings::height);
 	data->addItem(item);
 	data->addItem(nullptr);
 	item = new MenuItem("Back", ID::BACK, Type::SIMPLE);

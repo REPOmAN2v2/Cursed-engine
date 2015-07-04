@@ -4,8 +4,12 @@
 #include <climits>
 
 Menu::Menu():data(nullptr)
+{}
+
+void Menu::load()
 {
 	style = new MenuStyle(Globals::Settings::height, Globals::Settings::width);
+	createMainMenu();
 }
 
 void Menu::createMainMenu()

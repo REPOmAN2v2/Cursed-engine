@@ -1,10 +1,11 @@
 #pragma once
 
+#include <State/State.hpp>
 #include "MenuStyle.hpp"
 #include "MenuData.hpp"
 #include "MenuItemTemplates.hpp"
 
-class Menu
+class Menu : public State
 {
 public:
 	Menu();
@@ -16,6 +17,7 @@ public:
 	bool update();
 	void exit();
 	void resize();
+	void load();
 private:
 	MenuStyle *style;
 	MenuData *data;

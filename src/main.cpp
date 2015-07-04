@@ -1,22 +1,26 @@
 #include "ncurses.hpp"
+#include "State/Manager.hpp"
 #include "Menu/Menu.hpp"
 #include "Config/Globals.hpp"
 #include <iostream>
 
 int main()
 {
-	Globals::load();
-	std::cout << Globals::Settings::height << std::endl;
-	
+	Globals::load();	
 	Ncurses::init();
-	Menu menu;
-	menu.createMainMenu();
+
+	Manager manager;
+	State *state = new Menu();
+
+	manager.loop(state);
+	
+	/*menu.createMainMenu();
 	menu.draw();
 
 	while (!menu.update()) {
 		menu.draw();
 	}
 
-	menu.exit();
+	menu.exit();*/
 	Ncurses::exit();
 }

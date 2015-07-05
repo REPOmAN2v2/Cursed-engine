@@ -14,7 +14,7 @@ public:
 	void createPlayMenu();
 	void createSettingsMenu();
 	void draw();
-	bool update();
+	void update(Manager *manager);
 	void exit();
 	void resize();
 	void load();

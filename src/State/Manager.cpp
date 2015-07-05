@@ -1,6 +1,7 @@
 #include "Manager.hpp"
+#include "State.hpp"
 
-Manager::Manager():current(nullptr)
+Manager::Manager():current(nullptr),quit(false)
 {}
 
 Manager::~Manager()
@@ -13,16 +14,26 @@ Manager::~Manager()
 	current = nullptr;
 }
 
-void Manager::loop(State *state)
+void Manager::init(State *state)
 {
 	current = state;
+}
+
+void Manager::loop()
+{
 	current->load();
 
-	do {
+	while (!quit) {
 		current->draw();
-	} while (!current->update());
+		current->update(this);
+	}
 
 	current->exit();
 	delete current;
 	current = nullptr;
+}
+
+void Manager::exit()
+{
+	quit = true;
 }

@@ -114,12 +114,12 @@ void Menu::draw()
 	style->draw(data);
 }
 
-bool Menu::update()
+void Menu::update(Manager *manager)
 {
 	data->update();
 	switch (data->whichSelected()) {
 		case ID::QUIT:
-			return true;
+			manager->exit();
 		break;
 
 		case ID::PLAYMENU:
@@ -137,8 +137,6 @@ bool Menu::update()
 		default:
 		break;
 	} 
-
-	return false;
 }
 
 void Menu::resize()

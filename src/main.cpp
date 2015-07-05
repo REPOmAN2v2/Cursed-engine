@@ -12,7 +12,8 @@ int main()
 	Manager manager;
 	State *state = new Menu();
 
-	manager.loop(state);
+	manager.init(state);
+	manager.loop();
 	
 	/*menu.createMainMenu();
 	menu.draw();

@@ -12,6 +12,7 @@ public:
 	void loop();
 	void exit();
 private:
+	void closeState();
 	State *current;
 	bool quit;
 };

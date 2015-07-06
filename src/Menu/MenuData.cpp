@@ -211,7 +211,7 @@ void MenuData::update()
 
 		case KEY_RIGHT: // fallthrough
 		case KEY_LEFT:
-			if (current && current->type != Type::SIMPLE) {
+			if (current /*&& current->type != Type::SIMPLE*/) {
 				current->update(key);
 			}
 		break;

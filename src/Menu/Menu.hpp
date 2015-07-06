@@ -9,16 +9,21 @@ class Menu : public State
 {
 public:
 	Menu();
-	~Menu();
-	void createMainMenu();
-	void createPlayMenu();
-	void createSettingsMenu();
 	void draw();
 	void update(Manager *manager);
 	void exit();
-	void resize();
 	void load();
 private:
+	void createMainMenu();
+	void updateMainMenu(Manager *manager);
+	void createPlayMenu();
+	void updatePlayMenu(Manager *manager);
+	void savePlaySettings();
+	void createSettingsMenu();
+	void updateSettingsMenu(Manager *manager);
+	void saveSettingsSettings(); // yeah I know
+	void resize();
 	MenuStyle *style;
 	MenuData *data;
+	enum class MenuType {MAIN, PLAY, SETTINGS} curMenu;
 };

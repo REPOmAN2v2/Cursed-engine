@@ -16,6 +16,7 @@ Manager::~Manager()
 
 void Manager::init(State *state)
 {
+	closeState();
 	current = state;
 }
 
@@ -28,12 +29,24 @@ void Manager::loop()
 		current->update(this);
 	}
 
-	current->exit();
-	delete current;
-	current = nullptr;
+	closeState();
 }
 
 void Manager::exit()
 {
 	quit = true;
+}
+
+void Manager::change(State *state)
+{
+	init(state);
+}
+
+void Manager::closeState()
+{
+	if (current) {
+		current->exit();
+		delete current;
+		current = nullptr;
+	}
 }

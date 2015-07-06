@@ -15,13 +15,6 @@ int main()
 	manager.init(state);
 	manager.loop();
 	
-	/*menu.createMainMenu();
-	menu.draw();
-
-	while (!menu.update()) {
-		menu.draw();
-	}
-
-	menu.exit();*/
 	Ncurses::exit();
+	Globals::save();
 }

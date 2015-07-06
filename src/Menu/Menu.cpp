@@ -16,11 +16,14 @@ void Menu::createMainMenu()
 {
 	if (data) {
 		delete data;
+		data = nullptr;
 	}
 
 	data = new MenuData(style->menu->getH() - 2,
 						style->menu->getW() - 2,
 						1,1);
+
+	curMenu = MenuType::MAIN;
 
 	MenuItem *item;
 	item = new MenuItem("Play", ID::PLAYMENU, Type::SIMPLE);
@@ -37,11 +40,14 @@ void Menu::createPlayMenu()
 {
 	if (data) {
 		delete data;
+		data = nullptr;
 	}
 
 	data = new MenuData(style->menu->getH() - 2,
 						style->menu->getW() - 2,
 						1,1);
+
+	curMenu = MenuType::PLAY;
 
 	static const std::vector<std::string> simSpeed = {"Slow", "Normal", "Fast"};
 
@@ -74,25 +80,25 @@ void Menu::createSettingsMenu()
 {
 	if  (data) {
 		delete data;
+		data = nullptr;
 	}
 
 	data = new MenuData(style->menu->getH() - 2,
 						style->menu->getW() - 2,
 						1,1);
 
+	curMenu = MenuType::SETTINGS;
+
 	MenuItem *item;
-	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, 0, INT_MAX, Globals::Settings::width);
+	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, -1, INT_MAX, Globals::Settings::width);
 	data->addItem(item);
-	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, 0, INT_MAX, Globals::Settings::height);
+	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, -1, INT_MAX, Globals::Settings::height);
 	data->addItem(item);
 	data->addItem(nullptr);
+	item = new MenuItem("Reset", ID::RESET, Type::SIMPLE);
+	data->addItem(item);
 	item = new MenuItem("Back", ID::BACK, Type::SIMPLE);
 	data->addItem(item);
-}
-
-Menu::~Menu()
-{
-	exit();
 }
 
 void Menu::exit()
@@ -117,6 +123,17 @@ void Menu::draw()
 void Menu::update(Manager *manager)
 {
 	data->update();
+	if (curMenu == MenuType::MAIN) {
+		updateMainMenu(manager);
+	} else if (curMenu == MenuType::PLAY) {
+		updatePlayMenu(manager);
+	} else if (curMenu == MenuType::SETTINGS) {
+		updateSettingsMenu(manager);
+	}
+}
+
+void Menu::updateMainMenu(Manager *manager)
+{
 	switch (data->whichSelected()) {
 		case ID::QUIT:
 			manager->exit();
@@ -130,13 +147,49 @@ void Menu::update(Manager *manager)
 			createSettingsMenu();
 		break;
 
+		default:
+		break;
+	}
+}
+
+void Menu::updatePlayMenu(Manager *manager)
+{
+	switch (data->whichSelected()) {
+		case ID::PLAY:
+			/* State *game = new Game();
+			manager->change(game);*/
+		break;
+
 		case ID::BACK:
+			/*savePlaySettings();*/
 			createMainMenu();
+		break;
+
+		case ID::RESET:
+			createPlayMenu(); // overkill but easier that way
 		break;
 
 		default:
 		break;
-	} 
+	}
+}
+
+void Menu::updateSettingsMenu(Manager *manager)
+{
+	switch (data->whichSelected()) {
+		case ID::BACK:
+			/*saveSettingsSettings(); 
+			resize();*/
+			createMainMenu();
+		break;
+
+		case ID::RESET:
+			createSettingsMenu();
+		break;
+
+		default:
+		break;
+	}
 }
 
 void Menu::resize()

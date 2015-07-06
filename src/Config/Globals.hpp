@@ -3,6 +3,7 @@
 namespace Globals
 {
 	void load();
+	void save();
 
 	namespace Settings
 	{

@@ -18,6 +18,13 @@ Window::Window(Window *parent, int h, int w, int y, int x):_h(h),_w(w),_y(y),_x(
 	win = derwin(parent->win, _h, _w, y, x);
 }
 
+Window::~Window()
+{
+	if (win) {
+		delwin(win);
+	}
+}
+
 void Window::resize(int h, int w)
 {
 	wresize(win, h, w);

@@ -23,5 +23,6 @@ Style::~Style()
 {
 	if (main) {
 		delete main;
+		main = nullptr;
 	}
 }

@@ -16,6 +16,7 @@ MenuStyle::~MenuStyle()
 {
 	if (menu) {
 		delete menu;
+		menu = nullptr;
 	}
 }
 

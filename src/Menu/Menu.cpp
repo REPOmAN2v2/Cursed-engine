@@ -3,6 +3,8 @@
 #include <vector>
 #include <climits>
 
+// TODO: make each submenu inherit this class ? 
+
 Menu::Menu():data(nullptr)
 {}
 
@@ -161,12 +163,15 @@ void Menu::updatePlayMenu(Manager *manager)
 		break;
 
 		case ID::BACK:
-			/*savePlaySettings();*/
+			savePlaySettings();
 			createMainMenu();
 		break;
 
 		case ID::RESET:
-			createPlayMenu(); // overkill but easier that way
+		// overkill but easier that way right now
+		// TODO: iterate over items and reset them one by one
+		// probably faster and they already store their original value
+			createPlayMenu(); 
 		break;
 
 		default:
@@ -178,8 +183,8 @@ void Menu::updateSettingsMenu(Manager *manager)
 {
 	switch (data->whichSelected()) {
 		case ID::BACK:
-			/*saveSettingsSettings(); 
-			resize();*/
+			saveSettingsSettings(); 
+			/*resize();*/
 			createMainMenu();
 		break;
 
@@ -190,6 +195,17 @@ void Menu::updateSettingsMenu(Manager *manager)
 		default:
 		break;
 	}
+}
+
+void Menu::savePlaySettings()
+{
+	// empty for now
+}
+
+void Menu::saveSettingsSettings()
+{
+	Globals::Settings::width = data->get<int>(ID::WIDTH);
+	Globals::Settings::height = data->get<int>(ID::HEIGHT);
 }
 
 void Menu::resize()

@@ -11,7 +11,7 @@ public:
 
 	void draw(Window *window, bool cur, int w, int y, int x);
 	void update(int key);
-
+	int getValue();
 private:
-	int min, max, start, current;
+	int current, min, max, start;
 };

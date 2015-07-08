@@ -1,5 +1,6 @@
 #include "MenuData.hpp"
 #include "ncurses.hpp"
+#include <algorithm>
 
 MenuData::MenuData(int h, int w, int y, int x):
 	_h(h),
@@ -45,24 +46,41 @@ void MenuData::addItem(MenuItem *item)
 	}
 }
 
+MenuItem * MenuData::findItem(ID id)
+{
+	auto it = std::find_if( items.begin(), items.end(), [&](MenuItem * it) -> bool {
+							if (it && it->id == id) {
+								return true;
+							} else {
+								return false;
+							}});
+
+	if (it == items.end()) {
+		return nullptr;
+	}
+
+	return (*it);
+}
+
 void MenuData::removeItem(ID id)
 {
-	std::vector<MenuItem*>::iterator it = items.begin();
-	for (; it != items.end(); ++it) {
-		if (!(*it)) {
-			continue;
-		}
-
-		if ((*it)->id == id) {
-			if (*it == current) {
-				nextItem();
-				index--;
+	items.erase(
+		std::remove_if(
+			items.begin(),
+			items.end(),
+			[&](MenuItem* it) -> bool {
+            	if (it && it->id == id) {
+            		if (it == current) {
+            			nextItem();
+            			--index;
+            		}
+            		return true;
+            	} 
+				return false;
 			}
-
-			items.erase(it);
-			return;
-		}
-	}
+			),
+		items.end()
+		);
 }
 
 void MenuData::nextItem()
@@ -236,4 +254,15 @@ void MenuData::update()
 ID MenuData::whichSelected()
 {
 	return selected ? selected->id : ID::NONE;
+}
+
+template<>
+int MenuData::get(ID id)
+{
+	MenuItem *tmp = findItem(id);
+	if (!tmp) return 0;
+
+	MenuItemNumber *item = dynamic_cast<MenuItemNumber*>(tmp);
+
+	return item->getValue();
 }

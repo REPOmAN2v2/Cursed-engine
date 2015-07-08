@@ -7,11 +7,11 @@ MenuItemList::MenuItemList(
 	MenuItem(label, id, type),
 	list(list),
 	def(def),
-	current(0)
+	index(0)
 {
 	for (size_t i = 0; i < list.size(); ++i) {
 		if (list[i] == def) {
-			current = i;
+			index = i;
 			break;
 		}
 	}
@@ -19,7 +19,7 @@ MenuItemList::MenuItemList(
 
 void MenuItemList::draw(Window *window, bool cur, int w, int y, int x)
 {
-	std::string opt = list[current];
+	std::string opt = list[index];
 
 	window->print(label.substr(0, w - opt.size()), y, x, cur ? COLOR_GREEN : -1, -1);
 	window->print(opt, y, w - opt.size(), cur ? COLOR_GREEN : -1, -1);
@@ -28,16 +28,21 @@ void MenuItemList::draw(Window *window, bool cur, int w, int y, int x)
 void MenuItemList::update(int key)
 {
 	if (key == KEY_LEFT) {
-		if (current != 0) {
-			--current;
+		if (index != 0) {
+			--index;
 		} else {
-			current = list.size() - 1;
+			index = list.size() - 1;
 		}
 	} else if (key == KEY_RIGHT) {
-		if ((current + 1) < list.size()){ 
-			++current;
+		if ((index + 1) < list.size()){ 
+			++index;
 		} else {
-			current = 0;
+			index = 0;
 		}
 	}
+}
+
+std::string MenuItemList::getValue()
+{
+	return list[index];
 }

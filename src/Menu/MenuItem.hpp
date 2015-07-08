@@ -10,6 +10,7 @@ public:
 	virtual ~MenuItem() {};
 	virtual void draw(Window *window, bool cur, int w, int y, int x);
 	virtual void update(int) {};
+
 	ID id;
 	Type type;
 	std::string label;

@@ -12,8 +12,9 @@ public:
 
 	void draw(Window *window, bool cur, int w, int y, int x);
 	void update(int key);
+	std::string getValue();
 private:
 	std::vector<std::string> list;
 	std::string def;
-	size_t current;
+	size_t index;
 };

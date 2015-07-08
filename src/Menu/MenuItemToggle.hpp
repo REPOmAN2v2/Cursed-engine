@@ -9,6 +9,8 @@ public:
 
 	void draw(Window *window, bool cur, int w, int y, int x);
 	void update(int key);
+	bool getValue();
+
 private:
-	bool sel, init;
+	bool current, init;
 };

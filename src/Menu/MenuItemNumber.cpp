@@ -4,10 +4,10 @@ MenuItemNumber::MenuItemNumber(
 	const char *label, ID id, Type type,
 	int min, int max, int start):
 	MenuItem(label, id, type),
+	current(start),
 	min(min),
 	max(max),
-	start(start),
-	current(start)
+	start(start)
 {}
 
 void MenuItemNumber::draw(Window *window, bool cur, int w, int y, int x)
@@ -25,4 +25,9 @@ void MenuItemNumber::update(int key)
 	} else if (key == KEY_RIGHT) {
 		if ((current + 1) <= max) ++current;
 	}
+}
+
+int MenuItemNumber::getValue()
+{
+	return current;
 }

@@ -22,9 +22,18 @@ public:
 	void lastItem();
 	void update();
 	ID whichSelected();
+	template<typename T>
+	T get(ID id) {
+		return nullptr;
+		MenuItem *tmp = findItem(id);
+	};
 private:
+	MenuItem * findItem(ID id);
 	int _h, _w, _y, _x;
 	std::vector<MenuItem*> items;
 	MenuItem *current, *selected;
 	size_t index;
 };
+
+template<>
+int MenuData::get(ID id);

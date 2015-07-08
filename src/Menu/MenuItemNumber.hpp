@@ -9,8 +9,8 @@ public:
 		const char *label, ID id, Type type,
 		int min, int max, int start);
 
-	void draw(Window *window, bool cur, int w, int y, int x);
-	void update(int key);
+	void draw(Window *window, bool cur, int w, int y, int x) override;
+	void update(int key) override;
 	int getValue();
 private:
 	int current, min, max, start;

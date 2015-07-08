@@ -19,10 +19,10 @@ MenuData::~MenuData()
 
 void MenuData::clear()
 {
-	for (size_t i = 0; i < items.size(); ++i) {
-		if (items[i]) {
-			delete items[i];
-			items[i] = nullptr;
+	for (auto & elem : items) {
+		if (elem) {
+			delete elem;
+			elem = nullptr;
 		}
 	}
 

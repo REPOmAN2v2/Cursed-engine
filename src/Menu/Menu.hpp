@@ -9,10 +9,10 @@ class Menu : public State
 {
 public:
 	Menu();
-	void draw();
-	void update(Manager *manager);
-	void exit();
-	void load();
+	void draw() override;
+	void update(Manager *manager) override;
+	void exit() override;
+	void load() override;
 private:
 	void createMainMenu();
 	void updateMainMenu(Manager *manager);

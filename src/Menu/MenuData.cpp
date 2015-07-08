@@ -256,6 +256,10 @@ ID MenuData::whichSelected()
 	return selected ? selected->id : ID::NONE;
 }
 
+/* 	Ideally we could just call MenuItem::getValue() directly
+	Sadly virtual templates or virtual auto returns aren't a thing
+	neither are overloaded return types. */
+
 template<>
 int MenuData::get(ID id)
 {
@@ -263,6 +267,28 @@ int MenuData::get(ID id)
 	if (!tmp) return 0;
 
 	MenuItemNumber *item = dynamic_cast<MenuItemNumber*>(tmp);
+
+	return item->getValue();
+}
+
+template<>
+std::string MenuData::get(ID id)
+{
+	MenuItem *tmp = findItem(id);
+	if (!tmp) return std::string();
+
+	MenuItemList *item = dynamic_cast<MenuItemList*>(tmp);
+
+	return item->getValue();
+}
+
+template<>
+bool MenuData::get(ID id)
+{
+	MenuItem *tmp = findItem(id);
+	if (!tmp) return false;
+
+	MenuItemToggle *item = dynamic_cast<MenuItemToggle*>(tmp);
 
 	return item->getValue();
 }

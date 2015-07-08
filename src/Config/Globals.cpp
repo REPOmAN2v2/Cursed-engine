@@ -44,20 +44,6 @@ void Globals::load()
 	} catch (const SettingNotFoundException) {
 	}
 
-	/*const Setting &root = cfg->getRoot();
-
-	if (root.exists("settings")) {
-		const Setting &settings = root["settings"];
-		if (settings.exists("size")) {
-			const Setting &size = settings["size"];
-			int h, w;
-			if (size.lookupValue("height", h))
-				Globals::Settings::height = h;
-			if (size.lookupValue("width", w))
-				Globals::Settings::width = w;
-		}
-	}*/
-
 	delete cfg;
 }
 

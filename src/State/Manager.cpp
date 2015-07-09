@@ -26,7 +26,7 @@ void Manager::loop()
 
 	while (!quit) {
 		current->draw();
-		current->update(this);
+		current->update();
 	}
 
 	closeState();
@@ -40,6 +40,7 @@ void Manager::exit()
 void Manager::change(State *state)
 {
 	init(state);
+	current->load();
 }
 
 void Manager::closeState()

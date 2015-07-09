@@ -1,8 +1,12 @@
 #include "Menu.hpp"
 
-Menu::Menu(Manager &manager):State(manager),style(nullptr),data(nullptr)
+MenuStyle *Menu::style = nullptr;
+
+Menu::Menu(Manager &manager):State(manager),data(nullptr),quit(true)
 {
-	style = new MenuStyle(Globals::Settings::height, Globals::Settings::width);
+	if (!style) {
+		style = new MenuStyle(Globals::Settings::height, Globals::Settings::width);
+	}
 }
 
 void Menu::exit()
@@ -13,9 +17,10 @@ void Menu::exit()
 		data = nullptr;
 	}
 
-	if (style) {
+	if (style && quit) {
 		delete style;
 		style = nullptr;
+		quit = true;
 	}
 }
 
@@ -27,4 +32,11 @@ void Menu::draw()
 void Menu::resize()
 {
 	//style->menu->resize(y,x);
+}
+
+void Menu::changeMenu(State *state)
+{
+	// this lets us change menu states without rewriting the entire window
+	quit = false;
+	manager.change(state);
 }

@@ -30,15 +30,15 @@ void SettingsMenu::load()
 void SettingsMenu::update()
 {
 	data->update();
-	static State *menu = nullptr;
+	static State *state = nullptr;
 
 	switch (data->whichSelected()) {
 		case ID::BACK:
 			saveSettings(); 
 			/*resize();*/
-			menu = new MainMenu(manager);
-			manager.change(menu);
-			menu = nullptr;
+			state = new MainMenu(manager);
+			changeMenu(state);
+			state = nullptr;
 		break;
 
 		case ID::RESET:

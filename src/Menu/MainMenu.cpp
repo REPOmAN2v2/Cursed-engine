@@ -29,7 +29,7 @@ void MainMenu::load()
 void MainMenu::update()
 {
 	data->update();
-	static State *menu = nullptr;
+	static State *state = nullptr;
 
 	switch (data->whichSelected()) {
 		case ID::QUIT:
@@ -37,17 +37,17 @@ void MainMenu::update()
 		break;
 
 // TODO: this is very wasteful. Find a system (instances?) to only recreate the xxxxMenu,
-// not the parent classes all over again
+// not the parent classes all over again. Is it even possible?
 		case ID::PLAYMENU: 
-			menu = new PlayMenu(manager);
-			manager.change(menu);
-			menu = nullptr;
+			state = new PlayMenu(manager);
+			changeMenu(state);
+			state = nullptr;
 		break;
 
 		case ID::SETTINGS:
-			menu = new SettingsMenu(manager);
-			manager.change(menu);
-			menu = nullptr;
+			state = new SettingsMenu(manager);
+			changeMenu(state);
+			state = nullptr;
 		break;
 
 		default:

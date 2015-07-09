@@ -3,7 +3,7 @@
 #include <State/State.hpp>
 #include "MenuStyle.hpp"
 #include "MenuData.hpp"
-#include "MenuItemTemplates.hpp"
+#include "Items/MenuItemTemplates.hpp"
 
 class Menu : public State
 {

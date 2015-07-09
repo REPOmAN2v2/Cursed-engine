@@ -1,10 +1,10 @@
 #pragma once
 
 #include "window.hpp"
-#include "MenuItemNumber.hpp"
-#include "MenuItemList.hpp"
-#include "MenuItemToggle.hpp"
-#include "MenuItem.hpp"
+#include "Items/MenuItemNumber.hpp"
+#include "Items/MenuItemList.hpp"
+#include "Items/MenuItemToggle.hpp"
+#include "Items/MenuItem.hpp"
 #include <vector>
 
 class MenuData

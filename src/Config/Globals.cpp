@@ -11,7 +11,7 @@ using namespace libconfig;
 
 static Config * open(const char *file)
 {
-	auto    cfg = new Config();
+	auto cfg = new Config();
 
 	try {
 		cfg->readFile(file);

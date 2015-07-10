@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ncurses.h>
+#include <vector>
 #include <string>
 
 class Window
@@ -15,11 +16,13 @@ public:
 	void clear();
 	void setTitle();
 	void setBorders();
+	void setColor(short fore, short back);
 	void print(std::string line, int y, int x, short fore, short back);
-	int getH(){return _h;};
-	int getW(){return _w;};
-	int getY(){return _y;};
-	int getX(){return _x;};
+	void print(std::vector<std::string> lines, int y, int x, short fore, short back);
+	int getH() const {return _h;};
+	int getW() const {return _w;};
+	int getY() const {return _y;};
+	int getX() const {return _x;};
 private:
 	WINDOW *win;
 	int _h, _w, _y, _x;

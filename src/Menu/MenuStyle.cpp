@@ -1,4 +1,6 @@
 #include "MenuStyle.hpp"
+#include <Config/Globals.hpp>
+#include <algorithm>
 
 MenuStyle::MenuStyle(int h, int w):
 	Style(h, w),
@@ -10,13 +12,22 @@ MenuStyle::MenuStyle(int h, int w):
 void MenuStyle::create()
 {
 	Style::create();
-	int hh = main->getH() - 11;
-	int ww = main->getW() / 3;
-	int y = 11;
-	int x = main->getW() / 3;
-
 	destroy();
+
+	title = new Window(main, Globals::title_height + 2, -1, 1, 1);
+
+	int hh = main->getH() - title->getH() - 2;
+	int ww = main->getW() / 3;
+	int y = title->getH() + 1;
+	int x = main->getW() / 3 - 2;
+
 	menu = new Window(main, hh, ww, y, x);
+
+	// windows should be pushed from the background to the foreground
+	// otherwise expect the unexpected
+	windows.push_back(&main);
+	windows.push_back(&title);
+	windows.push_back(&menu);
 }
 
 MenuStyle::~MenuStyle()
@@ -34,13 +45,11 @@ void MenuStyle::destroy()
 
 void MenuStyle::draw(MenuData *data)
 {
-	main->clear();
-	menu->clear();
+	clear();
 	data->draw(menu);
-	menu->setBorders();
-	main->setBorders();
-	menu->refresh();
-	main->refresh();
+	title->print(Globals::title, 1, title->getW() / 2 - Globals::title_length/2, COLOR_RED, -1);
+	setBorders();
+	refresh();
 }
 
 void MenuStyle::resize(MenuData *data, int h, int w)
@@ -54,8 +63,21 @@ void MenuStyle::resize(MenuData *data, int h, int w)
 
 void MenuStyle::clearScreen()
 {
-	main->clear();
-	menu->clear();
-	menu->refresh();
-	main->refresh();
+	clear();
+	refresh();
+}
+
+void MenuStyle::clear()
+{
+	std::for_each(windows.begin(), windows.end(), [this](Window** &w){(**w).clear();});
+}
+
+void MenuStyle::refresh()
+{
+	std::for_each(windows.rbegin(), windows.rend(), [this](Window** &w){(**w).refresh();});
+}
+
+void MenuStyle::setBorders()
+{
+	std::for_each(windows.begin(), windows.end(), [this](Window** &w){(**w).setBorders();});
 }

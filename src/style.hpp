@@ -8,9 +8,8 @@ public:
 	Style(int h, int w);
 	virtual ~Style();
 	virtual void create();
-	virtual void destroy();
-	//virtual void draw() {};
-	Window *main;
 protected:
+	virtual void destroy();
+	Window *main;
 	int _h, _w;
 };

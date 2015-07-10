@@ -12,8 +12,12 @@ public:
 	void draw(MenuData *data);
 	void resize(MenuData *data, int h, int w);
 	void create() override;
-	void destroy() override;
-	Window *menu;
+	Window *title, *menu;
 private:
+	std::vector<Window **> windows; // purely for convenience
 	void clearScreen();
+	void destroy() override;
+	void clear();
+	void refresh();
+	void setBorders();
 };

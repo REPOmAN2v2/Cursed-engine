@@ -1,6 +1,6 @@
 #include "SettingsMenu.hpp"
 #include "MainMenu.hpp"
-#include <climits>
+//#include <climits>
 
 SettingsMenu::SettingsMenu(Manager &manager):Menu(manager) {};
 
@@ -16,9 +16,9 @@ void SettingsMenu::load()
 						1,1);
 
 	MenuItem *item;
-	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, -1, INT_MAX, Globals::Settings::width);
+	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, -1, COLS, Globals::Settings::width);
 	data->addItem(item);
-	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, -1, INT_MAX, Globals::Settings::height);
+	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, -1, LINES, Globals::Settings::height);
 	data->addItem(item);
 	data->addItem(nullptr);
 	item = new MenuItem("Reset", ID::RESET, Type::SIMPLE);
@@ -35,7 +35,7 @@ void SettingsMenu::update()
 	switch (data->whichSelected()) {
 		case ID::BACK:
 			saveSettings(); 
-			/*resize();*/
+			resize();
 			state = new MainMenu(manager);
 			changeMenu(state);
 			state = nullptr;

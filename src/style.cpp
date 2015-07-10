@@ -1,28 +1,37 @@
 #include "style.hpp"
 #include "ncurses.hpp"
 
-Style::Style(int h, int w)
+Style::Style(int h, int w):_h(h),_w(w)
+{}
+
+void Style::create()
 {
 	int y, x;
 
-	if (h == -1) {
-		h = LINES;
+	if (_h == -1 || _h > LINES) {
+		_h = LINES;
 	}
 
-	if (w == -1) {
-		w = COLS;
+	if (_w == -1 || _w > COLS) {
+		_w = COLS;
 	}
 
-	y = (LINES - h) / 2;
-	x = (COLS - w) / 2;
+	y = (LINES - _h) / 2;
+	x = (COLS - _w) / 2;
 
-	main = new Window(h, w, y, x);
+	destroy();
+	main = new Window(_h, _w, y, x);
 }
 
-Style::~Style()
+void Style::destroy()
 {
 	if (main) {
 		delete main;
 		main = nullptr;
 	}
+}
+
+Style::~Style()
+{
+	destroy();
 }

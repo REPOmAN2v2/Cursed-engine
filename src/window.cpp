@@ -28,8 +28,8 @@ Window::~Window()
 void Window::resize(int h, int w)
 {
 	wresize(win, h, w);
-	_w = w;
 	_h = h;
+	_w = w;
 }
 
 void Window::refresh()

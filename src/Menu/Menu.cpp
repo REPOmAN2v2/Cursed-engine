@@ -31,7 +31,7 @@ void Menu::draw()
 
 void Menu::resize()
 {
-	//style->menu->resize(y,x);
+	style->resize(data, Globals::Settings::height, Globals::Settings::width);
 }
 
 void Menu::changeMenu(State *state)

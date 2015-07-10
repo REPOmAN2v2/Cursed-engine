@@ -1,5 +1,5 @@
 PACKAGE = cursed_example
-VERSION = 0.3
+VERSION = 0.52
 DATE = $(shell date "+%b%y")
 
 EXE = $(PACKAGE)

@@ -1,6 +1,6 @@
 #Cursed Engine
 
-This is a rather simple wrapped around Ncurses providing an eas(y/ier) way of creating windows and menus, handling input and maintaining different states (using a game as an example, it manages your menu state and your game states). This engine can be used to build games or ncurses applications.
+This is a rather simple wrapper around Ncurses providing an eas(y/ier) way of creating windows and menus, handling input and maintaining different states (using a game as an example, it manages your menu states and your game states). This engine can be used to build games or ncurses applications.
 
 It is still in very heavy development. Hence the project uses a lot of example and debug code as I write it and use it for a game. Once all the main features are implemented, it will be cleaned up and documentation will be written. 
 

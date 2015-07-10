@@ -16,8 +16,8 @@ public:
 	virtual void load() = 0;
 protected:
 	virtual void saveSettings() = 0;
-	void resize();
 	void changeMenu(State *state);
+	void resize();
 	static MenuStyle *style;
 	MenuData *data;
 	bool quit;

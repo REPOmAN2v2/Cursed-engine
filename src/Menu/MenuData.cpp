@@ -211,11 +211,6 @@ void MenuData::draw(Window *window)
 void MenuData::update()
 {
 	int key = Ncurses::getKey(-1);
-
-	if (key == ERR) {
-		return;
-	}
-
 	selected = nullptr;
 
 	switch (key) {
@@ -227,13 +222,6 @@ void MenuData::update()
 			prevItem();
 		break;
 
-		case KEY_RIGHT: // fallthrough
-		case KEY_LEFT:
-			if (current /*&& current->type != Type::SIMPLE*/) {
-				current->update(key);
-			}
-		break;
-
 		case KEY_PPAGE:
 			firstItem();
 		break;
@@ -242,11 +230,15 @@ void MenuData::update()
 			lastItem();
 		break;
 
-		case '\n':
-			selected = current;
+		case ERR:
 		break;
 
+		case '\n':
+			selected = current; // fallthrough
 		default:
+			if (current) {
+				current->update(key);
+			}
 		break;
 	}
 }

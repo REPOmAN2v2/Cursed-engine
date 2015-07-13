@@ -1,12 +1,12 @@
 #include "window.hpp"
 #include <algorithm>
 
-Window::Window(int h, int w, int y, int x):_h(h),_w(w),_y(y),_x(x)
+Window::Window(int h, int w, int y, int x):_h(h),_w(w),_y(y),_x(x),title(""),borders(true)
 {
 	win = newwin(h, w, y, x);
 }
 
-Window::Window(Window *parent, int h, int w, int y, int x):_h(h),_w(w),_y(y),_x(x)
+Window::Window(Window *parent, int h, int w, int y, int x):_h(h),_w(w),_y(y),_x(x),title("")
 {
 	if (w == -1) {
 		_w = parent->_w - 2; 
@@ -35,6 +35,14 @@ void Window::resize(int h, int w)
 
 void Window::refresh()
 {
+	if (borders) {
+		box(win, 0, 0);
+	}
+
+	if (!title.empty()) {
+		print(title, 0, 1, COLOR_RED, -1);
+	}
+	
 	wrefresh(win);
 }
 
@@ -80,7 +88,12 @@ void Window::setColor(short fore, short back)
 	}
 }
 
-void Window::setBorders()
+void Window::toggleBorders()
 {
-	box(win, 0, 0);
+	borders = !borders;
+}
+
+void Window::setTitle(std::string title)
+{
+	this.title = title;
 }

@@ -14,8 +14,8 @@ public:
 	void resize(int h, int w);
 	void refresh();
 	void clear();
-	void setTitle();
-	void setBorders();
+	void setTitle(std::string title);
+	void toggleBorders();
 	void setColor(short fore, short back);
 	void print(std::string line, int y, int x, short fore, short back);
 	void print(std::vector<std::string> lines, int y, int x, short fore, short back);
@@ -25,5 +25,7 @@ public:
 	int getX() const {return _x;};
 private:
 	WINDOW *win;
+	std::string title;
+	bool borders;
 	int _h, _w, _y, _x;
 };

@@ -48,7 +48,6 @@ void MenuStyle::draw(MenuData *data)
 	clear();
 	data->draw(menu);
 	title->print(Globals::title, 1, title->getW() / 2 - Globals::title_length/2, COLOR_RED, -1);
-	setBorders();
 	refresh();
 }
 

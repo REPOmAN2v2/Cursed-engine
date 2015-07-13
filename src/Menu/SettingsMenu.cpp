@@ -16,9 +16,9 @@ void SettingsMenu::load()
 						1,1);
 
 	MenuItem *item;
-	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, -1, COLS, Globals::Settings::width);
+	item = new MenuItemNumber("Width", ID::WIDTH, Type::NUMBER, -1, Globals::Settings::max_width, Globals::Settings::width);
 	data->addItem(item);
-	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, -1, LINES, Globals::Settings::height);
+	item = new MenuItemNumber("Height", ID::HEIGHT, Type::NUMBER, -1, Globals::Settings::max_height, Globals::Settings::height);
 	data->addItem(item);
 	data->addItem(nullptr);
 	item = new MenuItem("Reset", ID::RESET, Type::SIMPLE);

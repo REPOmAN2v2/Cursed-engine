@@ -3,7 +3,9 @@
 #include <iostream>
 
 int Globals::Settings::height = 20;
+int Globals::Settings::max_height = 20;
 int Globals::Settings::width = 79;
+int Globals::Settings::max_width = 79;
 
 static const char *config = "config.cfg";
 

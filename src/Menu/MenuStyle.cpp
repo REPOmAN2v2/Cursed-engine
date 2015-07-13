@@ -78,5 +78,5 @@ void MenuStyle::refresh()
 
 void MenuStyle::setBorders()
 {
-	std::for_each(windows.begin(), windows.end(), [this](Window** &w){(**w).setBorders();});
+	std::for_each(windows.begin(), windows.end(), [this](Window** &w){(**w).toggleBorders();});
 }

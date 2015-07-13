@@ -11,7 +11,9 @@ namespace Globals
 	namespace Settings
 	{
 		extern int height;
+		extern int max_height;
 		extern int width;
+		extern int max_width;
 	}
 
 	// http://patorjk.com/software/taag/#p=testall&v=0&f=Alpha&t=CURSED

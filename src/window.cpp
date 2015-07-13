@@ -1,12 +1,12 @@
 #include "window.hpp"
 #include <algorithm>
 
-Window::Window(int h, int w, int y, int x):_h(h),_w(w),_y(y),_x(x),title(""),borders(true)
+Window::Window(int h, int w, int y, int x):title(""),borders(true),_h(h),_w(w),_y(y),_x(x)
 {
 	win = newwin(h, w, y, x);
 }
 
-Window::Window(Window *parent, int h, int w, int y, int x):_h(h),_w(w),_y(y),_x(x),title("")
+Window::Window(Window *parent, int h, int w, int y, int x):title(""),borders(true),_h(h),_w(w),_y(y),_x(x)
 {
 	if (w == -1) {
 		_w = parent->_w - 2; 
@@ -42,7 +42,7 @@ void Window::refresh()
 	if (!title.empty()) {
 		print(title, 0, 1, COLOR_RED, -1);
 	}
-	
+
 	wrefresh(win);
 }
 
@@ -95,5 +95,5 @@ void Window::toggleBorders()
 
 void Window::setTitle(std::string title)
 {
-	this.title = title;
+	this->title = title;
 }

@@ -1,4 +1,5 @@
 #include "ncurses.hpp"
+#include <Config/Globals.hpp>
 #include <ncurses.h>
 
 bool Ncurses::init()
@@ -10,6 +11,9 @@ bool Ncurses::init()
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 	start_color();
+
+	Globals::Settings::max_height = LINES;
+	Globals::Settings::max_width = COLS;
 
 
 	/*  Color pair 0 is reserved for default colours, we start indexing at 1

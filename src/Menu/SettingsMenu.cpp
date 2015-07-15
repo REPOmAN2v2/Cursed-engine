@@ -1,5 +1,6 @@
 #include "SettingsMenu.hpp"
 #include "MainMenu.hpp"
+#include <Dialog/Dialog.hpp>
 //#include <climits>
 
 SettingsMenu::SettingsMenu(Manager &manager):Menu(manager) {};
@@ -34,8 +35,11 @@ void SettingsMenu::update()
 
 	switch (data->whichSelected()) {
 		case ID::BACK:
-			saveSettings(); 
-			resize();
+			if (Dialog::prompt(std::string("Do you want to save?"), std::string("Save settings"))) {
+				saveSettings();
+				resize();
+			}
+			
 			state = new MainMenu(manager);
 			changeMenu(state);
 			state = nullptr;

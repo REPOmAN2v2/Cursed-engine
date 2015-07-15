@@ -1,6 +1,6 @@
 #include "style.hpp"
 #include "ncurses.hpp"
-#include <Config/Globals.hpp>
+#include "Config/Globals.hpp"
 
 Style::Style(int h, int w):_h(h),_w(w)
 {}

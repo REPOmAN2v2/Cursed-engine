@@ -14,9 +14,9 @@ else
 endif
 
 LDFLAGS = -lncurses -lconfig++
-INCLUDES = -I"src/"
+INCLUDES = -I"engine/"
 
-CXXFILES = $(shell find src -type f -name '*.cpp')
+CXXFILES = $(shell find engine -type f -name '*.cpp')
 OBJECTS = $(CXXFILES:.cpp=.o)
 
 DEFINES = -DVERSION=\""$(VERSION)"\" \
@@ -34,7 +34,7 @@ dirs:
 $(EXE): $(OBJECTS)
 	$(CXX) $(OBJECTS) -o bin/$(EXE) $(LDFLAGS)
 
-src/%.o: src/%.cpp
+engine/%.o: engine/%.cpp
 	$(CXX) $(CXXFLAGS) $< -c -o $@ $(DEFINES) $(INCLUDES)
 
 clean:

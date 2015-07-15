@@ -1,7 +1,7 @@
 #pragma once
 
-#include "style.hpp"
-#include "window.hpp"
+#include "../style.hpp"
+#include "../window.hpp"
 #include "MenuData.hpp"
 
 class MenuStyle : public Style

@@ -1,5 +1,5 @@
 #include "MenuData.hpp"
-#include "ncurses.hpp"
+#include "../ncurses.hpp"
 #include <algorithm>
 
 MenuData::MenuData(int h, int w, int y, int x):

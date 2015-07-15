@@ -1,5 +1,5 @@
 #include "MenuItemToggle.hpp"
-#include <Config/Globals.hpp>
+#include "../../Config/Globals.hpp"
 
 MenuItemToggle::MenuItemToggle(const char *label, ID id, Type type, bool init):
 	MenuItem(label, id, type),

@@ -41,6 +41,11 @@ void MenuStyle::destroy()
 		delete menu;
 		menu = nullptr;
 	}
+
+	if (title) {
+		delete title;
+		title = nullptr;
+	}
 }
 
 void MenuStyle::draw(MenuData *data)

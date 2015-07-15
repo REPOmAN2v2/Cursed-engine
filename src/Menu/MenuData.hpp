@@ -23,9 +23,8 @@ public:
 	void update();
 	ID whichSelected();
 	template<typename T>
-	T get(ID id) {
+	T get(ID) {
 		return nullptr;
-		MenuItem *tmp = findItem(id);
 	};
 private:
 	MenuItem * findItem(ID id);

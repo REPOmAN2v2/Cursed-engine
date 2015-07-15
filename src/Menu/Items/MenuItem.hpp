@@ -10,6 +10,7 @@ public:
 	virtual ~MenuItem() {};
 	virtual void draw(Window *window, bool cur, int w, int y, int x);
 	virtual void update(int) {};
+	virtual void reset() {};
 
 	ID id;
 	Type type;

@@ -11,6 +11,7 @@ public:
 
 	void draw(Window *window, bool cur, int w, int y, int x) override;
 	void update(int key) override;
+	void reset() override;
 	int getValue();
 private:
 	int current, min, max, start;

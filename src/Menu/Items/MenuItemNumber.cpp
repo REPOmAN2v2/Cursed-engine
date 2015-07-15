@@ -66,3 +66,8 @@ int MenuItemNumber::getValue()
 {
 	return current;
 }
+
+void MenuItemNumber::reset()
+{
+	current = start;
+}

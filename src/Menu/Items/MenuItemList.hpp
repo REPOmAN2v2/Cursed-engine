@@ -13,6 +13,7 @@ public:
 	void draw(Window *window, bool cur, int w, int y, int x) override;
 	void update(int key) override;
 	std::string getValue();
+	void reset() override;
 private:
 	std::vector<std::string> list;
 	std::string def;

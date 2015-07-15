@@ -1,21 +1,17 @@
 #include "MenuItemList.hpp"
 #include <Config/Globals.hpp>
+#include <utility>
 
 MenuItemList::MenuItemList(
 	const char *label, ID id, Type type,
 	std::vector<std::string> list,
 	std::string def):
 	MenuItem(label, id, type),
-	list(list),
-	def(def),
+	list(std::move(list)),
+	def(std::move(def)),
 	index(0)
 {
-	for (size_t i = 0; i < list.size(); ++i) {
-		if (list[i] == def) {
-			index = i;
-			break;
-		}
-	}
+	reset();
 }
 
 using namespace Globals;
@@ -48,4 +44,14 @@ void MenuItemList::update(int key)
 std::string MenuItemList::getValue()
 {
 	return list[index];
+}
+
+void MenuItemList::reset()
+{
+	for (size_t i = 0; i < list.size(); ++i) {
+		if (list[i] == def) {
+			index = i;
+			break;
+		}
+	}
 }

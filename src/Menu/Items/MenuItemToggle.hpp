@@ -10,7 +10,7 @@ public:
 	void draw(Window *window, bool cur, int w, int y, int x) override;
 	void update(int key) override;
 	bool getValue();
-
+	void reset() override;
 private:
 	bool current, init;
 };

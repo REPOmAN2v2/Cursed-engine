@@ -28,3 +28,8 @@ bool MenuItemToggle::getValue()
 {
 	return current;
 }
+
+void MenuItemToggle::reset()
+{
+	current = init;
+}

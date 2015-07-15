@@ -11,9 +11,9 @@ class Menu : public State
 public:
 	Menu(Manager &manager);
 	void draw() override;
-	virtual void update() = 0;
+	virtual void update() override = 0;
 	void exit() override;
-	virtual void load() = 0;
+	virtual void load() override = 0;
 protected:
 	virtual void saveSettings() = 0;
 	void changeMenu(State *state);

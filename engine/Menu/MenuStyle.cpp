@@ -1,5 +1,5 @@
 #include "MenuStyle.hpp"
-#include <Config/Globals.hpp>
+#include "../Config/Globals.hpp"
 #include <algorithm>
 
 MenuStyle::MenuStyle(int h, int w):

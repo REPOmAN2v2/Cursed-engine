@@ -1,6 +1,6 @@
 #pragma once
 
-#include "window.hpp"
+#include "../window.hpp"
 #include "Items/MenuItemNumber.hpp"
 #include "Items/MenuItemList.hpp"
 #include "Items/MenuItemToggle.hpp"

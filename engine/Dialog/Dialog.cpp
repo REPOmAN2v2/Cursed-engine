@@ -1,7 +1,7 @@
 #include "Dialog.hpp"
-#include <Config/Globals.hpp>
-#include <window.hpp>
-#include <ncurses.hpp> //Ncurses::getkey()
+#include "../Config/Globals.hpp"
+#include "../window.hpp"
+#include "../ncurses.hpp" //Ncurses::getkey()
 #include <vector>
 #include <sstream>
 

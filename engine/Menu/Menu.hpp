@@ -1,7 +1,7 @@
 #pragma once
 
-#include <State/State.hpp>
-#include <Config/Globals.hpp>
+#include "../State/State.hpp"
+#include "../Config/Globals.hpp"
 #include "MenuStyle.hpp"
 #include "MenuData.hpp"
 #include "Items/MenuItemTemplates.hpp"

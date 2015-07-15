@@ -1,5 +1,5 @@
 #include "ncurses.hpp"
-#include <Config/Globals.hpp>
+#include "Config/Globals.hpp"
 #include <ncurses.h>
 
 bool Ncurses::init()

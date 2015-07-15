@@ -1,5 +1,5 @@
 #include "MenuItemList.hpp"
-#include <Config/Globals.hpp>
+#include "../../Config/Globals.hpp"
 #include <utility>
 
 MenuItemList::MenuItemList(

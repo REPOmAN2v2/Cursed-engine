@@ -1,5 +1,5 @@
 #include "MenuItemNumber.hpp"
-#include <Config/Globals.hpp>
+#include "../../Config/Globals.hpp"
 
 MenuItemNumber::MenuItemNumber(
 	const char *label, ID id, Type type,

@@ -72,8 +72,14 @@ static bool create(std::string message, std::string title, bool yesno)
 
 	dialog.print(lines, 1, 1, -1, -1);
 
-	if (yesno) return update(dialog);
-	else return false;
+	if (yesno) {
+		return update(dialog);
+	} else {
+		dialog.refresh();
+		refresh();
+		Ncurses::getKey(-1);
+		return false;
+	}
 }
 
 bool Dialog::prompt(std::string message, std::string title)

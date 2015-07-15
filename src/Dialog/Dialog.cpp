@@ -45,7 +45,7 @@ static bool update(Window &dialog)
 	} while (true);
 }
 
-bool Dialog::prompt(std::string message, std::string title)
+static bool create(std::string message, std::string title, bool yesno)
 {
 	auto lines = split(message);
 
@@ -61,7 +61,7 @@ bool Dialog::prompt(std::string message, std::string title)
 
 	int x = Settings::max_width/2 - w/2;
 	int y = Settings::max_height/2 - h/2;
-	h += 4; // borders + Yes/No
+	h += yesno ? 4 : 2; // borders + Yes/No : borders
 	w += 2; // borders
 
 	Window dialog(h, w, y, x);
@@ -72,5 +72,16 @@ bool Dialog::prompt(std::string message, std::string title)
 
 	dialog.print(lines, 1, 1, -1, -1);
 
-	return update(dialog);
+	if (yesno) return update(dialog);
+	else return false;
+}
+
+bool Dialog::prompt(std::string message, std::string title)
+{
+	return create(message, title, true);
+}
+
+void Dialog::message(std::string message, std::string title)
+{
+	create(message, title, false);
 }

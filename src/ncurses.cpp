@@ -36,6 +36,11 @@ bool Ncurses::init()
 		init_pair(i, j, -1);
 	}
 
+	// TODO: add some glue to move these assignments out of there;
+	Globals::Colours::highlight = COLOR_GREEN;
+	Globals::Colours::title = COLOR_RED;
+	Globals::Colours::normal = -1;
+
 	refresh();
 
 	return true; // TODO: error handling

@@ -6,6 +6,9 @@ int Globals::Settings::height = 20;
 int Globals::Settings::max_height = 20;
 int Globals::Settings::width = 79;
 int Globals::Settings::max_width = 79;
+int Globals::Colours::highlight = -1;
+int Globals::Colours::title = -1;
+int Globals::Colours::normal = -1;
 
 static const char *config = "config.cfg";
 

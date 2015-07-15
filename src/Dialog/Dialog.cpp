@@ -26,10 +26,12 @@ static bool update(Window &dialog)
 	int h = dialog.getH();
 	int x = dialog.getW()/2 - 9/2; 
 
+	using namespace Globals;
+
 	do {
-		dialog.print(std::string("Yes"), h - 2, x, current ? COLOR_GREEN : -1, -1);
-		dialog.print(std::string(" | "), h - 2, x + 3, -1, -1);
-		dialog.print(std::string("No"), h - 2, x + 6, current ? -1 : COLOR_GREEN, -1);
+		dialog.print(std::string("Yes"), h - 2, x, current ? Colours::highlight : Colours::normal, Colours::normal);
+		dialog.print(std::string(" | "), h - 2, x + 3, Colours::normal, Colours::normal);
+		dialog.print(std::string("No"), h - 2, x + 6, current ? Colours::normal : Colours::highlight, Colours::normal);
 
 		dialog.refresh();
 		refresh();

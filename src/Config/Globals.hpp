@@ -16,6 +16,13 @@ namespace Globals
 		extern int max_width;
 	}
 
+	namespace Colours
+	{
+		extern int highlight;
+		extern int title;
+		extern int normal;
+	}
+
 	// http://patorjk.com/software/taag/#p=testall&v=0&f=Alpha&t=CURSED
 	// for all your ASCII text needs
 	const std::vector<std::string> title = {"     _/_/_/  _/    _/  _/_/_/      _/_/_/  _/_/_/_/  _/_/_/ ",

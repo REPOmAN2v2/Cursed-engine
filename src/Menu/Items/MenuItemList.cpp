@@ -1,4 +1,5 @@
 #include "MenuItemList.hpp"
+#include <Config/Globals.hpp>
 
 MenuItemList::MenuItemList(
 	const char *label, ID id, Type type,
@@ -17,12 +18,14 @@ MenuItemList::MenuItemList(
 	}
 }
 
+using namespace Globals;
+
 void MenuItemList::draw(Window *window, bool cur, int w, int y, int x)
 {
 	std::string opt = list[index];
 
-	window->print(label.substr(0, w - opt.size()), y, x, cur ? COLOR_GREEN : -1, -1);
-	window->print(opt, y, w - opt.size(), cur ? COLOR_GREEN : -1, -1);
+	window->print(label.substr(0, w - opt.size()), y, x, cur ? Colours::highlight : Colours::normal, Colours::normal);
+	window->print(opt, y, w - opt.size(), cur ? Colours::highlight : Colours::normal, Colours::normal);
 }
 
 void MenuItemList::update(int key)

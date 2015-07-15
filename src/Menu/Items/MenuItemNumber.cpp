@@ -1,4 +1,5 @@
 #include "MenuItemNumber.hpp"
+#include <Config/Globals.hpp>
 
 MenuItemNumber::MenuItemNumber(
 	const char *label, ID id, Type type,
@@ -10,12 +11,14 @@ MenuItemNumber::MenuItemNumber(
 	start(start)
 {}
 
+using namespace Globals;
+
 void MenuItemNumber::draw(Window *window, bool cur, int w, int y, int x)
 {
 	std::string num = std::to_string(current);
 
-	window->print(label.substr(0, w - num.size()), y, x, cur ? COLOR_GREEN : -1, -1);
-	window->print(num, y, w - num.size(), cur ? COLOR_GREEN : -1, -1);
+	window->print(label.substr(0, w - num.size()), y, x, cur ? Colours::highlight : Colours::normal, Colours::normal);
+	window->print(num, y, w - num.size(), cur ? Colours::highlight : Colours::normal, Colours::normal);
 }
 
 void MenuItemNumber::update(int key)

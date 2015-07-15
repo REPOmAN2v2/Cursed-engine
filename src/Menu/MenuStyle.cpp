@@ -16,12 +16,12 @@ void MenuStyle::create()
 
 	title = new Window(main, Globals::title_height + 2, -1, 1, 1);
 
-	int hh = main->getH() - title->getH() - 2;
-	int ww = main->getW() / 3;
+	int h = main->getH() - title->getH() - 2;
+	int w = main->getW() / 3;
 	int y = title->getH() + 1;
-	int x = main->getW() / 3 - 2;
+	int x = main->getW()/2 - w/2;
 
-	menu = new Window(main, hh, ww, y, x);
+	menu = new Window(main, h, w, y, x);
 
 	// windows should be pushed from the background to the foreground
 	// otherwise expect the unexpected

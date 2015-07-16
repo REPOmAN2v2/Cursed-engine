@@ -21,8 +21,9 @@ static Config * open(const char *file)
 	try {
 		cfg->readFile(file);
 	} catch (const FileIOException &fioex) {
-		std::cerr << "I/O error while reading file." << std::endl;
-		exit(EXIT_FAILURE);
+		std::cerr << "Config file could not be read, falling back to hardcoded defaults." << std::endl;
+		delete cfg;
+		cfg = nullptr;
 	} catch (const ParseException &pex) {
 		std::cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine()
 	          << " - " << pex.getError() << std::endl;
@@ -35,6 +36,7 @@ static Config * open(const char *file)
 void Globals::load()
 {
 	Config *cfg = open(config);
+	if (!cfg) return;
 
 	try {
 		const Setting &tmp = cfg->lookup("settings.size.height");

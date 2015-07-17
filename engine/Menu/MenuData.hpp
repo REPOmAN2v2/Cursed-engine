@@ -14,20 +14,20 @@ public:
 	~MenuData();
 	void clear();
 	void addItem(MenuItem *item);
-	void removeItem(ID id);
+	void removeItem(unsigned id);
 	void draw(Window *window);
 	void nextItem();
 	void prevItem();
 	void firstItem();
 	void lastItem();
 	void update();
-	ID whichSelected();
+	unsigned whichSelected();
 	template<typename T>
-	T get(ID) {
+	T get(unsigned) {
 		return nullptr;
 	};
 private:
-	MenuItem * findItem(ID id);
+	MenuItem * findItem(unsigned id);
 	int _h, _w, _y, _x;
 	std::vector<MenuItem*> items;
 	MenuItem *current, *selected;
@@ -35,4 +35,4 @@ private:
 };
 
 template<>
-int MenuData::get(ID id);
+int MenuData::get(unsigned id);

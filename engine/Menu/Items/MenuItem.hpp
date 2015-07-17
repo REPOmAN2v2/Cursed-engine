@@ -1,18 +1,24 @@
 #pragma once
 
 #include "../../window.hpp"
-#include "MenuItemTemplates.hpp"
 
 class MenuItem
 {
 public:
-	MenuItem(const char *label, ID id, Type type);
+	enum class Type : unsigned int {
+		NONE = 0,
+		SIMPLE,
+		NUMBER,
+		LIST,
+		TOGGLE
+	} type; 
+	
+	MenuItem(const char *label, unsigned id, MenuItem::Type type);
 	virtual ~MenuItem() {};
 	virtual void draw(Window *window, bool cur, int w, int y, int x);
 	virtual void update(int) {};
 	virtual void reset() {};
 
-	ID id;
-	Type type;
+	unsigned id;
 	std::string label;
 };

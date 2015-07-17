@@ -4,7 +4,6 @@
 #include "../Config/Globals.hpp"
 #include "MenuStyle.hpp"
 #include "MenuData.hpp"
-#include "Items/MenuItemTemplates.hpp"
 
 class Menu : public State
 {

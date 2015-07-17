@@ -1,9 +1,9 @@
 #include "MenuItem.hpp"
 #include "../../Config/Globals.hpp"
 
-MenuItem::MenuItem(const char *label, ID id, Type type):
-	id(id),
+MenuItem::MenuItem(const char *label, unsigned id, MenuItem::Type type):
 	type(type),
+	id(id),
 	label(label)
 {}
 

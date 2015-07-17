@@ -2,7 +2,7 @@
 #include "../../Config/Globals.hpp"
 
 MenuItemNumber::MenuItemNumber(
-	const char *label, ID id, Type type,
+	const char *label, unsigned id, MenuItem::Type type,
 	int min, int max, int start):
 	MenuItem(label, id, type),
 	current(start),

@@ -6,7 +6,7 @@ class MenuItemList: public MenuItem
 {
 public:
 	MenuItemList(
-		const char *label, ID id, Type type,
+		const char *label, unsigned id, MenuItem::Type type,
 		std::vector<std::string> list,
 		std::string def);
 

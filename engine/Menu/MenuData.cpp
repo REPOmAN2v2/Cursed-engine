@@ -46,7 +46,7 @@ void MenuData::addItem(MenuItem *item)
 	}
 }
 
-MenuItem * MenuData::findItem(ID id)
+MenuItem * MenuData::findItem(unsigned id)
 {
 	auto it = std::find_if( items.begin(), items.end(), [&](MenuItem * it) -> bool {
 							if (it && it->id == id) {
@@ -62,7 +62,7 @@ MenuItem * MenuData::findItem(ID id)
 	return (*it);
 }
 
-void MenuData::removeItem(ID id)
+void MenuData::removeItem(unsigned id)
 {
 	items.erase(
 		std::remove_if(
@@ -243,9 +243,9 @@ void MenuData::update()
 	}
 }
 
-ID MenuData::whichSelected()
+unsigned MenuData::whichSelected()
 {
-	return selected ? selected->id : ID::NONE;
+	return selected ? selected->id : 0;
 }
 
 /* 	Ideally we could just call MenuItem::getValue() directly
@@ -253,7 +253,7 @@ ID MenuData::whichSelected()
 	neither are overloaded return types. */
 
 template<>
-int MenuData::get(ID id)
+int MenuData::get(unsigned id)
 {
 	MenuItem *tmp = findItem(id);
 	if (!tmp) return 0;
@@ -264,7 +264,7 @@ int MenuData::get(ID id)
 }
 
 template<>
-std::string MenuData::get(ID id)
+std::string MenuData::get(unsigned id)
 {
 	MenuItem *tmp = findItem(id);
 	if (!tmp) return std::string();
@@ -275,7 +275,7 @@ std::string MenuData::get(ID id)
 }
 
 template<>
-bool MenuData::get(ID id)
+bool MenuData::get(unsigned id)
 {
 	MenuItem *tmp = findItem(id);
 	if (!tmp) return false;

@@ -4,6 +4,7 @@
 
 MenuStyle::MenuStyle(int h, int w):
 	Style(h, w),
+	title(nullptr),
 	menu(nullptr)
 {
 	create();

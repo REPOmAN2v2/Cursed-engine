@@ -1,10 +1,8 @@
-#include <ncurses.h>
 #include <string>
 
-#include "../../Config/Globals.hpp"
-#include "MenuItemNumber.hpp"
-#include "engine/Menu/Items/../../window.hpp"
-#include "engine/Menu/Items/MenuItem.hpp"
+#include "engine/Config/Globals.hpp"
+#include "engine/Menu/Items/MenuItemNumber.hpp"
+#include "engine/window.hpp"
 
 MenuItemNumber::MenuItemNumber(
 	const char *label, unsigned id, MenuItem::Type type,

@@ -1,6 +1,6 @@
-#include "../../Config/Globals.hpp"
-#include "MenuItem.hpp"
-#include "engine/Menu/Items/../../window.hpp"
+#include "engine/Config/Globals.hpp"
+#include "engine/Menu/Items/MenuItem.hpp"
+#include "engine/window.hpp"
 
 MenuItem::MenuItem(const char *label, unsigned id, MenuItem::Type type):
 	type(type),

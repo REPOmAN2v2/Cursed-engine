@@ -1,7 +1,7 @@
-#include "Menu.hpp"
-#include "engine/Menu/../Config/Globals.hpp"
-#include "engine/Menu/../State/Manager.hpp"
-#include "engine/Menu/../State/State.hpp"
+#include "engine/Menu/Menu.hpp"
+#include "engine/Config/Globals.hpp"
+#include "engine/State/Manager.hpp"
+#include "engine/State/State.hpp"
 #include "engine/Menu/MenuData.hpp"
 #include "engine/Menu/MenuStyle.hpp"
 

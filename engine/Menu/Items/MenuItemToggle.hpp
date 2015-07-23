@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MenuItem.hpp"
+#include "engine/Menu/Items/MenuItem.hpp"
 
 class Window;
 

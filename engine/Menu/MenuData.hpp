@@ -1,14 +1,10 @@
 #pragma once
 
-#include <stddef.h>
+#include <stddef.h> // for size_t
 #include <string>
 #include <vector>
 
-#include "../window.hpp"
-#include "Items/MenuItem.hpp"
-#include "Items/MenuItemList.hpp"
-#include "Items/MenuItemNumber.hpp"
-#include "Items/MenuItemToggle.hpp"
+#include "engine/window.hpp"
 
 class MenuItem;
 class Window;

@@ -1,11 +1,9 @@
-#include <ncurses.h>
 #include <algorithm>
 #include <string>
 
-#include "../Config/Globals.hpp"
-#include "MenuStyle.hpp"
-#include "engine/Menu/../style.hpp"
-#include "engine/Menu/Items/../../window.hpp"
+#include "engine/Config/Globals.hpp"
+#include "engine/Menu/MenuStyle.hpp"
+#include "engine/window.hpp"
 #include "engine/Menu/MenuData.hpp"
 
 MenuStyle::MenuStyle(int h, int w):

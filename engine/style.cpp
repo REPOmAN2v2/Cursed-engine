@@ -1,6 +1,6 @@
-#include "Config/Globals.hpp"
+#include "engine/Config/Globals.hpp"
 #include "engine/window.hpp"
-#include "style.hpp"
+#include "engine/style.hpp"
 
 Style::Style(int h, int w):main(nullptr),_h(h),_w(w)
 {}

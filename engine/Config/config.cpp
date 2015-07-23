@@ -1,7 +1,7 @@
-#include <stdlib.h>
+#include <cstdlib> // for std::exit(1), EXIT_FAILURE
 #include <iostream>
 
-#include "config.hpp"
+#include "engine/Config/config.hpp"
 
 // TODO: check if library functions are already overloaded for char*/std:string
 Config * ConfigIO::open(const char *file)
@@ -17,7 +17,7 @@ Config * ConfigIO::open(const char *file)
 	} catch (const ParseException &pex) {
 		std::cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine()
 	          << " - " << pex.getError() << std::endl;
-		exit(EXIT_FAILURE);
+		std::exit(EXIT_FAILURE);
 	}
 
 	return cfg;

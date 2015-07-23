@@ -1,5 +1,5 @@
-#include "Manager.hpp"
-#include "State.hpp"
+#include "engine/State/Manager.hpp"
+#include "engine/State/State.hpp"
 
 Manager::Manager():current(nullptr),quit(false)
 {}

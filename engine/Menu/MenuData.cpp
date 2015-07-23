@@ -1,9 +1,8 @@
-#include <ncurses.h>
 #include <algorithm>
 
-#include "../ncurses.hpp"
-#include "MenuData.hpp"
-#include "engine/Menu/Items/../../window.hpp"
+#include "engine/ncurses.hpp"
+#include "engine/Menu/MenuData.hpp"
+#include "engine/window.hpp"
 #include "engine/Menu/Items/MenuItem.hpp"
 #include "engine/Menu/Items/MenuItemList.hpp"
 #include "engine/Menu/Items/MenuItemNumber.hpp"

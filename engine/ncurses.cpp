@@ -1,7 +1,7 @@
-#include <curses.h>
+#include <ncurses.h>
 
-#include "Config/Globals.hpp"
-#include "ncurses.hpp"
+#include "engine/Config/Globals.hpp"
+#include "engine/ncurses.hpp"
 
 bool Ncurses::init()
 {

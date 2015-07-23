@@ -2,9 +2,7 @@
 
 #include <vector>
 
-#include "../style.hpp"
-#include "../window.hpp"
-#include "MenuData.hpp"
+#include "engine/style.hpp"
 
 class MenuData;
 class Window;

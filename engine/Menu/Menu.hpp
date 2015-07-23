@@ -1,9 +1,6 @@
 #pragma once
 
-#include "../Config/Globals.hpp"
-#include "../State/State.hpp"
-#include "MenuData.hpp"
-#include "MenuStyle.hpp"
+#include "engine/State/State.hpp"
 
 class Manager;
 class MenuData;

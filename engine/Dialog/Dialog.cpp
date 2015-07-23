@@ -1,12 +1,11 @@
-#include <ncurses.h>
-#include <algorithm>
-#include <sstream>
+#include <algorithm> // for std::move
+#include <sstream> // for std::stringstream
 #include <vector>
 
-#include "../Config/Globals.hpp"
-#include "../ncurses.hpp" //Ncurses::getkey()
-#include "../window.hpp"
-#include "Dialog.hpp"
+#include "engine/Config/Globals.hpp"
+#include "engine/ncurses.hpp" //Ncurses::getkey()
+#include "engine/window.hpp"
+#include "engine/Dialog/Dialog.hpp"
 
 using namespace Globals;
 

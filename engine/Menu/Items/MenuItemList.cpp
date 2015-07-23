@@ -1,6 +1,10 @@
-#include "MenuItemList.hpp"
-#include "../../Config/Globals.hpp"
+#include <ncurses.h>
 #include <utility>
+
+#include "../../Config/Globals.hpp"
+#include "MenuItemList.hpp"
+#include "engine/Menu/Items/../../window.hpp"
+#include "engine/Menu/Items/MenuItem.hpp"
 
 MenuItemList::MenuItemList(
 	const char *label, unsigned id, MenuItem::Type type,

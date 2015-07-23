@@ -2,6 +2,8 @@
 
 #include "MenuItem.hpp"
 
+class Window;
+
 class MenuItemToggle: public MenuItem
 {
 public:

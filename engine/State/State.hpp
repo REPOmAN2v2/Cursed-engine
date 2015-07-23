@@ -5,7 +5,7 @@
 class State
 {
 public:
-	State(Manager &manager):manager(manager) {};
+	explicit State(Manager &manager):manager(manager) {};
 	virtual ~State() {};
 	virtual void load() = 0;
 	virtual void exit() = 0;

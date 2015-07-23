@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libconfig.h++>
+#include <string>
 
 using namespace libconfig;
 

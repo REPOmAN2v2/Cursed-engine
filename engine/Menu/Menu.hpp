@@ -1,14 +1,18 @@
 #pragma once
 
-#include "../State/State.hpp"
 #include "../Config/Globals.hpp"
-#include "MenuStyle.hpp"
+#include "../State/State.hpp"
 #include "MenuData.hpp"
+#include "MenuStyle.hpp"
+
+class Manager;
+class MenuData;
+class MenuStyle;
 
 class Menu : public State
 {
 public:
-	Menu(Manager &manager);
+	explicit Menu(Manager &manager);
 	void draw() override;
 	virtual void update() override = 0;
 	void exit() override;

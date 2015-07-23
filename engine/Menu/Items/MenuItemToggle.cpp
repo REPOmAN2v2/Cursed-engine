@@ -1,5 +1,10 @@
-#include "MenuItemToggle.hpp"
+#include <ncurses.h>
+#include <string>
+
 #include "../../Config/Globals.hpp"
+#include "MenuItemToggle.hpp"
+#include "engine/Menu/Items/../../window.hpp"
+#include "engine/Menu/Items/MenuItem.hpp"
 
 MenuItemToggle::MenuItemToggle(const char *label, unsigned id, MenuItem::Type type, bool init):
 	MenuItem(label, id, type),

@@ -1,7 +1,9 @@
-#include "config.hpp"
+#include <stdlib.h>
 #include <iostream>
 
-// check if library functions are already overloaded for char*/std:string
+#include "config.hpp"
+
+// TODO: check if library functions are already overloaded for char*/std:string
 Config * ConfigIO::open(const char *file)
 {
 	auto cfg = new Config();

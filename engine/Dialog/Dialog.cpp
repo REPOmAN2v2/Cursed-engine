@@ -1,9 +1,12 @@
-#include "Dialog.hpp"
-#include "../Config/Globals.hpp"
-#include "../window.hpp"
-#include "../ncurses.hpp" //Ncurses::getkey()
-#include <vector>
+#include <ncurses.h>
+#include <algorithm>
 #include <sstream>
+#include <vector>
+
+#include "../Config/Globals.hpp"
+#include "../ncurses.hpp" //Ncurses::getkey()
+#include "../window.hpp"
+#include "Dialog.hpp"
 
 using namespace Globals;
 

@@ -1,6 +1,12 @@
 #pragma once
 
+#include <stddef.h>
+#include <string>
+#include <vector>
+
 #include "MenuItem.hpp"
+
+class Window;
 
 class MenuItemList: public MenuItem
 {

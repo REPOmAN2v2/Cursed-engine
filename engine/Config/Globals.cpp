@@ -1,6 +1,10 @@
-#include "config.hpp"
+#include <libconfig.h++>
+
 #include "Globals.hpp"
-#include <iostream>
+#include "config.hpp"
+
+// TODO: once proper color support is added, add it to config file
+// TODO: add title as well with special function to tokenize on \n and save it ?
 
 int Globals::Settings::height = 20;
 int Globals::Settings::max_height = 20;

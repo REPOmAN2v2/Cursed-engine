@@ -1,8 +1,8 @@
-#include "style.hpp"
-#include "ncurses.hpp"
 #include "Config/Globals.hpp"
+#include "engine/window.hpp"
+#include "style.hpp"
 
-Style::Style(int h, int w):_h(h),_w(w)
+Style::Style(int h, int w):main(nullptr),_h(h),_w(w)
 {}
 
 using namespace Globals;

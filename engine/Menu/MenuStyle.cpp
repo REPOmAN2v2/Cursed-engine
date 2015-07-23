@@ -1,6 +1,12 @@
-#include "MenuStyle.hpp"
-#include "../Config/Globals.hpp"
+#include <ncurses.h>
 #include <algorithm>
+#include <string>
+
+#include "../Config/Globals.hpp"
+#include "MenuStyle.hpp"
+#include "engine/Menu/../style.hpp"
+#include "engine/Menu/Items/../../window.hpp"
+#include "engine/Menu/MenuData.hpp"
 
 MenuStyle::MenuStyle(int h, int w):
 	Style(h, w),

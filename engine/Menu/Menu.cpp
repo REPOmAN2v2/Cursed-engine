@@ -1,4 +1,9 @@
 #include "Menu.hpp"
+#include "engine/Menu/../Config/Globals.hpp"
+#include "engine/Menu/../State/Manager.hpp"
+#include "engine/Menu/../State/State.hpp"
+#include "engine/Menu/MenuData.hpp"
+#include "engine/Menu/MenuStyle.hpp"
 
 MenuStyle *Menu::style = nullptr;
 

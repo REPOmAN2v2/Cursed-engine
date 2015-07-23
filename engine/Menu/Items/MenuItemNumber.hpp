@@ -2,6 +2,8 @@
 
 #include "MenuItem.hpp"
 
+class Window;
+
 class MenuItemNumber: public MenuItem
 {
 public:

@@ -1,8 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <string>
+#include <curses.h>
 #include <ncurses.h>
+#include <string>
+#include <vector>
 
 class Window
 {

@@ -1,11 +1,17 @@
 #pragma once
 
-#include "../window.hpp"
-#include "Items/MenuItemNumber.hpp"
-#include "Items/MenuItemList.hpp"
-#include "Items/MenuItemToggle.hpp"
-#include "Items/MenuItem.hpp"
+#include <stddef.h>
+#include <string>
 #include <vector>
+
+#include "../window.hpp"
+#include "Items/MenuItem.hpp"
+#include "Items/MenuItemList.hpp"
+#include "Items/MenuItemNumber.hpp"
+#include "Items/MenuItemToggle.hpp"
+
+class MenuItem;
+class Window;
 
 class MenuData
 {

@@ -1,6 +1,13 @@
-#include "MenuData.hpp"
-#include "../ncurses.hpp"
+#include <ncurses.h>
 #include <algorithm>
+
+#include "../ncurses.hpp"
+#include "MenuData.hpp"
+#include "engine/Menu/Items/../../window.hpp"
+#include "engine/Menu/Items/MenuItem.hpp"
+#include "engine/Menu/Items/MenuItemList.hpp"
+#include "engine/Menu/Items/MenuItemNumber.hpp"
+#include "engine/Menu/Items/MenuItemToggle.hpp"
 
 MenuData::MenuData(int h, int w, int y, int x):
 	_h(h),

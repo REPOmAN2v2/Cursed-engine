@@ -1,6 +1,10 @@
 #pragma once
 
+#include <string>
+
 #include "../../window.hpp"
+
+class Window;
 
 class MenuItem
 {

@@ -1,8 +1,13 @@
 #pragma once
 
+#include <vector>
+
 #include "../style.hpp"
 #include "../window.hpp"
 #include "MenuData.hpp"
+
+class MenuData;
+class Window;
 
 class MenuStyle : public Style
 {

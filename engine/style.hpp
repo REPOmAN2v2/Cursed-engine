@@ -2,6 +2,8 @@
 
 #include "window.hpp"
 
+class Window;
+
 class Style
 {
 public:

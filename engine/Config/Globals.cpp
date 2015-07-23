@@ -1,5 +1,5 @@
+#include "config.hpp"
 #include "Globals.hpp"
-#include <libconfig.h++>
 #include <iostream>
 
 int Globals::Settings::height = 20;
@@ -9,33 +9,20 @@ int Globals::Settings::max_width = 79;
 int Globals::Colours::highlight = -1;
 int Globals::Colours::title = -1;
 int Globals::Colours::normal = -1;
+std::vector<std::string> Globals::Title::title = {"     _/_/_/  _/    _/  _/_/_/      _/_/_/  _/_/_/_/  _/_/_/ ",
+												  "  _/        _/    _/  _/    _/  _/        _/        _/    _/",
+												  " _/        _/    _/  _/_/_/      _/_/    _/_/_/    _/    _/ ",
+												  "_/        _/    _/  _/    _/        _/  _/        _/    _/  ",
+	 											  "_/_/_/    _/_/    _/    _/  _/_/_/    _/_/_/_/  _/_/_/      " };
+int Globals::Title::length = 60;
+int Globals::Title::height = 6;
 
-static const char *config = "config.cfg";
-
-using namespace libconfig;
-
-static Config * open(const char *file)
-{
-	auto cfg = new Config();
-
-	try {
-		cfg->readFile(file);
-	} catch (const FileIOException &fioex) {
-		std::cerr << "Config file could not be read, falling back to hardcoded defaults." << std::endl;
-		delete cfg;
-		cfg = nullptr;
-	} catch (const ParseException &pex) {
-		std::cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine()
-	          << " - " << pex.getError() << std::endl;
-		exit(EXIT_FAILURE);
-	}
-
-	return cfg;
-}
+static const char *file = "menu.cfg";
+static ConfigIO IO;
 
 void Globals::load()
 {
-	Config *cfg = open(config);
+	Config *cfg = IO.open(file);
 	if (!cfg) return;
 
 	try {
@@ -54,22 +41,13 @@ void Globals::load()
 	delete cfg;
 }
 
-static Setting & addSetting(Setting &setting, const char *str, Setting::Type type)
-{
-	if (!setting.exists(str)) {
-		return setting.add(str, type);
-	}
-
-	return setting[str];
-}
-
 static void writeSettingsMenu(Config *cfg)
 {
 	Setting &root = cfg->getRoot();
-	Setting &settings = addSetting(root, "settings", Setting::TypeGroup);
-	Setting &size = addSetting(settings, "size", Setting::TypeGroup);
-	Setting &height = addSetting(size, "height", Setting::TypeInt);
-	Setting &width = addSetting(size, "width", Setting::TypeInt);
+	Setting &settings = IO.addSetting(root, "settings", Setting::TypeGroup);
+	Setting &size = IO.addSetting(settings, "size", Setting::TypeGroup);
+	Setting &height = IO.addSetting(size, "height", Setting::TypeInt);
+	Setting &width = IO.addSetting(size, "width", Setting::TypeInt);
 
 	height = Globals::Settings::height;
 	width = Globals::Settings::width;
@@ -77,15 +55,11 @@ static void writeSettingsMenu(Config *cfg)
 
 void Globals::save()
 {
-	Config *cfg = open(config);
+	Config *cfg = IO.open(file);
+	if (!cfg) return;
 	writeSettingsMenu(cfg);
 
-	try {
-		cfg->writeFile(config);
-		std::cerr << "Updated configuration file written to: " << config << std::endl;
-	} catch (const FileIOException &fioex) {
-		std::cerr << "I/O error while writing file: " << config << std::endl;
-	}
+	IO.write(cfg, file);
 
 	delete cfg;
 }

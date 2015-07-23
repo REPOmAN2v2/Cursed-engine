@@ -1,3 +1,6 @@
+# this makefile is outdated, it will not work
+# TODO: compile as library
+
 PACKAGE = cursed_example
 VERSION = 0.11.14
 DATE = $(shell date "+%b%y")
@@ -10,7 +13,7 @@ DEBUG ?= 1
 ifeq ($(DEBUG), 1)
 	CXXFLAGS += -Wall -Wextra -g
 else
-	CXXFLAGS += -02 -march=native
+	CXXFLAGS += -O2 -march=native
 endif
 
 LDFLAGS = -lncurses -lconfig++

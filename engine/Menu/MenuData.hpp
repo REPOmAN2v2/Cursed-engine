@@ -36,3 +36,9 @@ private:
 
 template<>
 int MenuData::get(unsigned id);
+
+template<>
+std::string MenuData::get(unsigned id);
+
+template<>
+bool MenuData::get(unsigned id);

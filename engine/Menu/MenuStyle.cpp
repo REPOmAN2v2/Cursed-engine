@@ -15,7 +15,7 @@ void MenuStyle::create()
 	Style::create();
 	destroy();
 
-	title = new Window(main, Globals::title_height + 2, -1, 1, 1);
+	title = new Window(main, Globals::Title::height + 2, -1, 1, 1);
 
 	int h = main->getH() - title->getH() - 2;
 	int w = main->getW() / 3;
@@ -53,7 +53,7 @@ void MenuStyle::draw(MenuData *data)
 {
 	clear();
 	data->draw(menu);
-	title->print(Globals::title, 1, title->getW() / 2 - Globals::title_length/2, COLOR_RED, -1);
+	title->print(Globals::Title::title, 1, title->getW() / 2 - Globals::Title::length/2, COLOR_RED, -1);
 	refresh();
 }
 

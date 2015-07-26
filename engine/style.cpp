@@ -28,10 +28,8 @@ void Style::create()
 
 void Style::destroy()
 {
-	if (main) {
-		delete main;
-		main = nullptr;
-	}
+	delete main;
+	main = nullptr;
 }
 
 Style::~Style()

@@ -22,8 +22,8 @@ void MenuItemList::draw(Window *window, bool cur, int w, int y, int x)
 {
 	std::string opt = list[index];
 
-	window->print(label.substr(0, w - opt.size()), y, x, cur ? Colours::highlight : Colours::normal, Colours::normal);
-	window->print(opt, y, w - opt.size(), cur ? Colours::highlight : Colours::normal, Colours::normal);
+	window->print(label.substr(0, w - opt.size()), y, x, cur ? Globals::text["highlight"] : Globals::text["normal"]);
+	window->print(opt, y, w - opt.size(), cur ? Globals::text["highlight"] : Globals::text["normal"]);
 }
 
 void MenuItemList::update(int key)

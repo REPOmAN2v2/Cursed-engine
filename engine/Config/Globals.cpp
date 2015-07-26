@@ -1,6 +1,8 @@
 #include "engine/Config/Globals.hpp" // for Globals namepace
 #include "engine/Config/config.hpp" // for ConfigIO, Setting, Config classes
 
+#include "engine/Attributes.hpp"
+
 // TODO: once proper color support is added, add it to config file
 // TODO: add title as well with special function to tokenize on \n and save it ?
 
@@ -8,9 +10,13 @@ int Globals::Settings::height = 20;
 int Globals::Settings::max_height = 20;
 int Globals::Settings::width = 79;
 int Globals::Settings::max_width = 79;
-int Globals::Colours::highlight = -1;
-int Globals::Colours::title = -1;
-int Globals::Colours::normal = -1;
+
+std::map<std::string, Attributes> Globals::text = 
+	{{"default", {}},
+	 {"highlight", {Colours::Colour::GREEN, Colours::Colour::DEFAULT, Attributes::REVERSE}},
+	 {"title", {Colours::Colour::RED, Colours::Colour::DEFAULT, Attributes::BOLD}}
+	};
+
 std::vector<std::string> Globals::Title::title = {"     _/_/_/  _/    _/  _/_/_/      _/_/_/  _/_/_/_/  _/_/_/ ",
 												  "  _/        _/    _/  _/    _/  _/        _/        _/    _/",
 												  " _/        _/    _/  _/_/_/      _/_/    _/_/_/    _/    _/ ",

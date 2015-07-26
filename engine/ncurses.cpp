@@ -12,10 +12,10 @@ bool Ncurses::init()
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 	start_color();
+	use_default_colors();
 
 	Globals::Settings::max_height = LINES;
 	Globals::Settings::max_width = COLS;
-
 
 	/*  Color pair 0 is reserved for default colours, we start indexing at 1
 		8 colours from 0 to 7: black, red, green, yellow, blue, magenta, cyan, white
@@ -23,7 +23,7 @@ bool Ncurses::init()
 		i = (int)(n - 1)/8 and j = (n - 1)%8
 		To get the pair from the colours:
 		n = i*8 + 1 + j
-		*/
+		
 	for (int i = COLOR_BLACK, k = 1; i <= COLOR_WHITE; ++i) {
 		for (int j = COLOR_BLACK; j <= COLOR_WHITE; ++j) {
 			init_pair(k, i, j);
@@ -31,16 +31,13 @@ bool Ncurses::init()
 		}
 	}
 
-	/*	Now for just coloured text */
-	use_default_colors();
+		Now for just coloured text 
+	
 	for (int i = 65, j = COLOR_BLACK; j <= COLOR_WHITE; ++i, ++j) {
 		init_pair(i, j, -1);
-	}
+	}*/
 
 	// TODO: add some glue to move these assignments out of there;
-	Globals::Colours::highlight = COLOR_GREEN;
-	Globals::Colours::title = COLOR_RED;
-	Globals::Colours::normal = -1;
 
 	refresh();
 

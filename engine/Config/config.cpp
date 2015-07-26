@@ -10,7 +10,7 @@ Config * ConfigIO::open(const char *file)
 
 	try {
 		cfg->readFile(file);
-	} catch (const FileIOException &fioex) {
+	} catch (const FileIOException) {
 		std::cerr << "Config file could not be read, falling back to hardcoded defaults." << std::endl;
 		delete cfg;
 		cfg = nullptr;
@@ -60,7 +60,7 @@ void ConfigIO::write(Config *cfg, const char *file)
 	try {
 		cfg->writeFile(file);
 		std::cerr << "Updated configuration file written to: " << file << std::endl;
-	} catch (const FileIOException &fioex) {
+	} catch (const FileIOException) {
 		std::cerr << "I/O error while writing file: " << file << std::endl;
 	}
 }

@@ -42,22 +42,17 @@ MenuStyle::~MenuStyle()
 
 void MenuStyle::destroy()
 {
-	if (menu) {
-		delete menu;
-		menu = nullptr;
-	}
-
-	if (title) {
-		delete title;
-		title = nullptr;
-	}
+	delete menu;
+	delete title;
+	menu = nullptr;
+	title = nullptr;
 }
 
 void MenuStyle::draw(MenuData *data)
 {
 	clear();
 	data->draw(menu);
-	title->print(Globals::Title::title, 1, title->getW() / 2 - Globals::Title::length/2, COLOR_RED, -1);
+	title->print(Globals::Title::title, 1, title->getW() / 2 - Globals::Title::length/2, Globals::text["title"]);
 	refresh();
 }
 

@@ -12,5 +12,5 @@ using namespace Globals;
 
 void MenuItem::draw(Window *window, bool cur, int w, int y, int x)
 {
-	window->print(label.substr(0, w), y, x, cur ? Colours::highlight : Colours::normal, Colours::normal);
+	window->print(label.substr(0, w), y, x, cur ? Globals::text["highlight"] : Globals::text["normal"]);
 }

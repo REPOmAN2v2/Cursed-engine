@@ -20,8 +20,8 @@ void MenuItemNumber::draw(Window *window, bool cur, int w, int y, int x)
 {
 	std::string num = std::to_string(current);
 
-	window->print(label.substr(0, w - num.size()), y, x, cur ? Colours::highlight : Colours::normal, Colours::normal);
-	window->print(num, y, w - num.size(), cur ? Colours::highlight : Colours::normal, Colours::normal);
+	window->print(label.substr(0, w - num.size()), y, x, cur ? Globals::text["highlight"] : Globals::text["normal"]);
+	window->print(num, y, w - num.size(), cur ? Globals::text["highlight"] : Globals::text["normal"]);
 }
 
 void MenuItemNumber::update(int key)

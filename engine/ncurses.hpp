@@ -1,5 +1,7 @@
 #pragma once
 
+#include "engine/Colours.hpp"
+
 namespace Ncurses
 {
 	bool init();

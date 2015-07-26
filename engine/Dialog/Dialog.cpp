@@ -7,8 +7,6 @@
 #include "engine/window.hpp"
 #include "engine/Dialog/Dialog.hpp"
 
-using namespace Globals;
-
 static std::vector<std::string> split(const std::string &message)
 {
 	std::vector<std::string> strings;
@@ -28,12 +26,10 @@ static bool update(Window &dialog)
 	int h = dialog.getH();
 	int x = dialog.getW()/2 - 9/2; 
 
-	using namespace Globals;
-
 	do {
-		dialog.print(std::string("Yes"), h - 2, x, current ? Colours::highlight : Colours::normal, Colours::normal);
-		dialog.print(std::string(" | "), h - 2, x + 3, Colours::normal, Colours::normal);
-		dialog.print(std::string("No"), h - 2, x + 6, current ? Colours::normal : Colours::highlight, Colours::normal);
+		dialog.print(std::string("Yes"), h - 2, x, current ? Globals::text["highlight"] : Globals::text["normal"]);
+		dialog.print(std::string(" | "), h - 2, x + 3, Globals::text["normal"]);
+		dialog.print(std::string("No"), h - 2, x + 6, current ? Globals::text["normal"] : Globals::text["highlight"]);
 
 		dialog.refresh();
 		refresh();
@@ -61,8 +57,8 @@ static bool create(std::string message, std::string title, bool yesno)
 	// TODO: check for w > Settings::max_width and trim lines if necessary
 	// TODO: add scrolling if h > Settings::max_height
 
-	int x = Settings::max_width/2 - w/2;
-	int y = Settings::max_height/2 - h/2;
+	int x = Globals::Settings::max_width/2 - w/2;
+	int y = Globals::Settings::max_height/2 - h/2;
 	h += yesno ? 4 : 2; // borders + Yes/No : borders
 	w += 2; // borders
 
@@ -72,16 +68,16 @@ static bool create(std::string message, std::string title, bool yesno)
 		dialog.setTitle(title);
 	}
 
-	dialog.print(lines, 1, 1, -1, -1);
+	dialog.print(lines, 1, 1, Globals::text["normal"]);
 
 	if (yesno) {
 		return update(dialog);
-	} else {
-		dialog.refresh();
-		refresh();
-		Ncurses::getKey(-1);
-		return false;
 	}
+
+	dialog.refresh();
+	refresh();
+	Ncurses::getKey(-1);
+	return false;
 }
 
 bool Dialog::prompt(std::string message, std::string title)

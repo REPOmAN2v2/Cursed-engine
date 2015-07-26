@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "engine/ncurses.hpp"
+#include "engine/Config/Globals.hpp"
 #include "engine/Menu/MenuData.hpp"
 #include "engine/window.hpp"
 #include "engine/Menu/Items/MenuItem.hpp"
@@ -26,10 +27,8 @@ MenuData::~MenuData()
 void MenuData::clear()
 {
 	for (auto & elem : items) {
-		if (elem) {
-			delete elem;
-			elem = nullptr;
-		}
+		delete elem;
+		elem = nullptr;
 	}
 
 	items.clear();
@@ -55,11 +54,7 @@ void MenuData::addItem(MenuItem *item)
 MenuItem * MenuData::findItem(unsigned id)
 {
 	auto it = std::find_if( items.begin(), items.end(), [&](MenuItem * it) -> bool {
-							if (it && it->id == id) {
-								return true;
-							} else {
-								return false;
-							}});
+							return (it && it->id == id);});
 
 	if (it == items.end()) {
 		return nullptr;
@@ -97,12 +92,9 @@ void MenuData::nextItem()
 		current = items.back();
 		index = 0;
 		return;
-	} else if (current == items.back()) {
-		// check the menu does not contain any empty items
-		if (index == (items.size() - 1)) {
-			firstItem();
-			return;
-		}
+	} else if (current == items.back() && index == (items.size() - 1)) {
+		firstItem();
+		return;
 	}
 
 	++index;
@@ -121,11 +113,9 @@ void MenuData::prevItem()
 		current = items.front();
 		index = 0;
 		return;
-	} else if (current == items.front()) {
-		if (index == 0) {
-			lastItem();
-			return;
-		}
+	} else if (current == items.front() && index == 0) {
+		lastItem();
+		return;
 	}
 
 	--index;
@@ -193,13 +183,13 @@ void MenuData::draw(Window *window)
 			window->print("(more)",
 						  _y + dy,
 						  _x + _w/2 - 3,
-						  -1,-1); // center the text
+						  Globals::text["normal"]); // center the text
 			continue;
 		} else if ((i == end - 1) && (i != items.size() - 1)) {
 			window->print("(more)",
 						  _y + dy,
 						  _x + _w/2 - 3,
-						  -1,-1);
+						  Globals::text["normal"]);
 			continue;
 		} else if (!items[i]) {
 			std::string line;
@@ -207,7 +197,7 @@ void MenuData::draw(Window *window)
 			window->print(line,
 						  _y + dy,
 						  _x,
-						  -1,-1);
+						  Globals::text["normal"]);
 		} else {
 			items[i]->draw(window, (items[i] == current), _w, _y + dy, _x);
 		}

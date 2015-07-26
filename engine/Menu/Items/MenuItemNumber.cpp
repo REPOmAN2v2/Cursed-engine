@@ -27,6 +27,7 @@ void MenuItemNumber::draw(Window *window, bool cur, int w, int y, int x)
 void MenuItemNumber::update(int key)
 {
 	// these bools tell us if we set the 1st, 2nd, 3rd and 4th digits
+	// TODO: high cyclomatic complexity, can I improve this?
 	static bool a = false;
 	static bool b = false;
 	static bool c = false;

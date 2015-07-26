@@ -27,9 +27,11 @@ static bool update(Window &dialog)
 	int x = dialog.getW()/2 - 9/2; 
 
 	do {
-		dialog.print(std::string("Yes"), h - 2, x, current ? Globals::text["highlight"] : Globals::text["normal"]);
+		dialog.print(std::string("Yes"), h - 2, x, current ? 
+			Globals::text["highlight"] : Globals::text["normal"]);
 		dialog.print(std::string(" | "), h - 2, x + 3, Globals::text["normal"]);
-		dialog.print(std::string("No"), h - 2, x + 6, current ? Globals::text["normal"] : Globals::text["highlight"]);
+		dialog.print(std::string("No"), h - 2, x + 6, current ? 
+			Globals::text["normal"] : Globals::text["highlight"]);
 
 		dialog.refresh();
 		refresh();

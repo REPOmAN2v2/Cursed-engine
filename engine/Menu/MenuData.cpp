@@ -54,7 +54,7 @@ void MenuData::addItem(MenuItem *item)
 MenuItem * MenuData::findItem(unsigned id)
 {
 	auto it = std::find_if( items.begin(), items.end(), [&](MenuItem * it) -> bool {
-							return (it && it->id == id);});
+							return it && it->id == id;});
 
 	if (it == items.end()) {
 		return nullptr;
@@ -230,7 +230,8 @@ void MenuData::update()
 		break;
 
 		case '\n':
-			selected = current; // fallthrough
+			selected = current; 
+			// fallthrough
 		default:
 			if (current) {
 				current->update(key);

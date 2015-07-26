@@ -23,17 +23,6 @@ Config * ConfigIO::open(const char *file)
 	return cfg;
 }
 
-/*template<typename T>
-void ConfigIO::lookup(Config *cfg, T &val, const char* str)
-{
-	try {
-		const Setting &tmp = cfg->lookup(str);
-		val = tmp;
-	} catch (const SettingNotFoundException) {
-		// setting doesn't exist, we'll fall back to the hardcoded value
-	}
-}*/
-
 template<>
 void ConfigIO::lookup(Config *cfg, std::string &val, const char* str)
 {

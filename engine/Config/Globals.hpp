@@ -4,8 +4,6 @@
 #include <string>
 #include <map>
 
-//#include "engine/Attributes.hpp"
-
 struct Attributes;
 
 namespace Globals
@@ -20,16 +18,6 @@ namespace Globals
 		extern int width;
 		extern int max_width;
 	}
-
-	/*namespace Text
-	{
-		const Attributes highlight(Colours::Colour::GREEN);
-		const Attributes title(Colours::Colour::RED, Colours::Colour::DEFAULT, Attributes::BLINK);
-		const Attributes normal();
-		const Attributes highlight(Colours::Colour::GREEN);
-		const Attributes title(Colours::Colour::RED, Colours::Colour::DEFAULT, Attributes::BLINK);
-		const Attributes normal(); 
-	}*/
 
 	extern std::map<std::string, Attributes> text;
 

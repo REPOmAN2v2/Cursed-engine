@@ -12,7 +12,7 @@ int Globals::Settings::width = 79;
 int Globals::Settings::max_width = 79;
 
 std::map<std::string, Attributes> Globals::text = 
-	{{"default", {}},
+	{{"normal", {}},
 	 {"highlight", {Colours::Colour::GREEN, Colours::Colour::DEFAULT, Attributes::REVERSE}},
 	 {"title", {Colours::Colour::RED, Colours::Colour::DEFAULT, Attributes::BOLD}}
 	};

@@ -20,6 +20,7 @@ static constexpr const char * names[] = {
 	"white"
 };
 
+// TODO: move this to a utils header
 template<typename ... Args>
 static std::string string_format( const char* format, Args ... args )
 {

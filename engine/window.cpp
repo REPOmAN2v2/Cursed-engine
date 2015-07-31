@@ -96,6 +96,8 @@ void Window::refresh()
 		print(title, 0, 1, Globals::text["title"]);
 	}
 
+	// TODO: replace calls to wrefresh() with wnoutrefresh() + doupdate()
+	// once all windows are refreshed
 	wrefresh(win);
 }
 

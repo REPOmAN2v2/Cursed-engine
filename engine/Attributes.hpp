@@ -10,7 +10,13 @@ struct Attributes {
 		UNDERLINE = 0x02,
 		DIM = 0x04,
 		REVERSE = 0x8,
-		BLINK = 0x10
+		BLINK = 0x10, 
+		// Deprecated, can be used to mark text as protected (eg shouldn't be deleted in a form)
+		PROTECT = 0x20, 
+		INVIS = 0x40,
+		UNUSED0 = 0x80,
+		// This flag is basically deprecated, repurpose it
+		STANDOUT = UNDERLINE | BOLD | BLINK
 	} flags;
 	Colours::Colour fg;
 	Colours::Colour bg;

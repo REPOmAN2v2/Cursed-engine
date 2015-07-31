@@ -8,10 +8,12 @@ bool Ncurses::init()
 {
 	initscr();
 	raw();
+	nonl();
 	noecho();
 	cbreak();
 	keypad(stdscr, TRUE);
 	nodelay(stdscr, TRUE);
+	set_escdelay(25);
 	curs_set(0);
 	start_color();
 	use_default_colors();
@@ -35,7 +37,7 @@ void Ncurses::exit()
 
 // if delay == -1, wait until we get a key
 // if delay == 0, don't wait at all
-int Ncurses::getKey(int delay)
+int Ncurses::getRawKey(int delay)
 {
 	timeout(delay);
 	int c = getch();
@@ -43,11 +45,16 @@ int Ncurses::getKey(int delay)
 	return c;
 }
 
-Key Ncurses::getTestKey(int delay)
+Key Ncurses::getKey(int delay)
 {
 	timeout(delay);
 
 	const int c = getch();
+
+	// TODO: temporary! fix space/'\n'/KEY_ENTER !! Same with ^I and tab
+	if (c == 13) {
+		return Key::ENTER;
+	}
 
 	// First, we'll check for special values
 	// We start with ctrl + letter
@@ -67,8 +74,10 @@ Key Ncurses::getTestKey(int delay)
 		case KEY_DOWN: return Key::DOWN;
 		case KEY_LEFT: return Key::LEFT;
 		case KEY_RIGHT: return Key::RIGHT;
-		case KEY_PPAGE: return Key::PAGEUP;
-		case KEY_NPAGE: return Key::PAGEDOWN;
+		case KEY_PPAGE: return Key::PPAGE;
+		case KEY_NPAGE: return Key::NPAGE;
+		case KEY_ENTER: //fallthrough
+		case '\n': return Key::ENTER;
 	}
 
 	return (c >=0 && c < 256) ? c : Key::UNKNOWN;

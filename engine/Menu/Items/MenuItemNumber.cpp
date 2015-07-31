@@ -1,6 +1,7 @@
 #include <string>
 
 #include "engine/Config/Globals.hpp"
+#include "engine/Keys.hpp"
 #include "engine/Menu/Items/MenuItemNumber.hpp"
 #include "engine/window.hpp"
 
@@ -24,7 +25,7 @@ void MenuItemNumber::draw(Window *window, bool cur, int w, int y, int x)
 	window->print(num, y, w - num.size(), cur ? Globals::text["highlight"] : Globals::text["normal"]);
 }
 
-void MenuItemNumber::update(int key)
+void MenuItemNumber::update(Key key)
 {
 	// these bools tell us if we set the 1st, 2nd, 3rd and 4th digits
 	// TODO: high cyclomatic complexity, can I improve this?
@@ -33,23 +34,23 @@ void MenuItemNumber::update(int key)
 	static bool c = false;
 	static bool d = false;
 
-	if (key == KEY_LEFT) {
+	if (key.val == Key::LEFT) {
 		if ((current - 1) >= min) --current; 
-	} else if (key == KEY_RIGHT) {
+	} else if (key.val == Key::RIGHT) {
 		if ((current + 1) <= max) ++current;
-	} else if (key >= '0' && key <= '9') {
+	} else if (key.val >= '0' && key.val <= '9') {
 		if (!a) {
 			a = true;
-			current = key - '0';
+			current = key.val - '0';
 		} else if (!b) {
 			b = true;
-			current = current * 10 + key -'0';
+			current = current * 10 + key.val -'0';
 		} else if (!c) {
 			c = true;
-			current = current * 10 + key - '0';
+			current = current * 10 + key.val - '0';
 		} else if (!d) {
 			d = true;
-			current = current * 10 + key - '0';
+			current = current * 10 + key.val - '0';
 			a = b = c = d = false;
 		}
 
@@ -61,7 +62,7 @@ void MenuItemNumber::update(int key)
 			current = min;
 			a = b = c = d = false;
 		}
-	} else if (key == '\n') {
+	} else if (key.val == Key::ENTER) {
 		a = b = c = d = false;
 	}
 }

@@ -17,7 +17,7 @@ public:
 		std::string def);
 
 	void draw(Window *window, bool cur, int w, int y, int x) override;
-	void update(int key) override;
+	void update(Key key) override;
 	std::string getValue();
 	void reset() override;
 private:

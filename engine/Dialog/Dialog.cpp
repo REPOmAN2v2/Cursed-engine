@@ -3,7 +3,8 @@
 #include <vector>
 
 #include "engine/Config/Globals.hpp"
-#include "engine/ncurses.hpp" //Ncurses::getkey()
+#include "engine/Keys.hpp"
+#include "engine/ncurses.hpp"
 #include "engine/window.hpp"
 #include "engine/Dialog/Dialog.hpp"
 
@@ -36,10 +37,10 @@ static bool update(Window &dialog)
 		dialog.refresh();
 		refresh();
 
-		int key = Ncurses::getKey(-1);
-		if (key == KEY_LEFT || key == KEY_RIGHT) {
+		Key key = Ncurses::getKey(-1);
+		if (key.val == Key::LEFT || key.val == Key::RIGHT) {
 			current = !current;
-		} else if (key == '\n') {
+		} else if (key.val == Key::ENTER) {
 			return current;
 		}
 	} while (true);
@@ -78,7 +79,7 @@ static bool create(std::string message, std::string title, bool yesno)
 
 	dialog.refresh();
 	refresh();
-	Ncurses::getKey(-1);
+	Ncurses::getKey(-1); // press any key to continue
 	return false;
 }
 

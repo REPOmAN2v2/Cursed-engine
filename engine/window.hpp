@@ -27,6 +27,7 @@ public:
 	int getY() const {return _y;};
 	int getX() const {return _x;};
 private:
+	// TODO: add background colour
 	WINDOW *win;
 	std::string title;
 	bool borders;

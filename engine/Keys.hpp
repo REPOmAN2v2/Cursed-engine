@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 struct Key {
 	enum class Mod : int {
@@ -21,8 +22,9 @@ struct Key {
 		DOWN,
 		LEFT,
 		RIGHT,
-		PAGEUP,
-		PAGEDOWN,
+		PPAGE,
+		NPAGE,
+		ENTER,
 		UNKNOWN
 	};
 
@@ -30,14 +32,18 @@ struct Key {
 
 	constexpr Key(int value):mod(Mod::NONE),val(value) {};
 	constexpr Key(Mod mod, int value):mod(mod),val(value) {};
-	constexpr int value() const { return val; }; //TODO: how to tell if it's modified?
+	//TODO: how to tell if it's modified? Right now this method is useless
+	constexpr int value() const { return val; };
 
 	constexpr bool operator==(Key key) const { return val == key.value(); };
 	constexpr bool operator!=(Key key) const { return val != key.value(); };
 };
 
+using KeyMap = std::vector<Key>;
+
+// TODO: add alt support somehow
 constexpr Key ctrl(int key) {
 	return {Key::Mod::CTRL, key};
 }
 
-using Keys = std::vector<Key>;
+std::string toStr(Key key); 

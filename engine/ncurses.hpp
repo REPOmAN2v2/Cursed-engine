@@ -8,6 +8,6 @@ namespace Ncurses
 {
 	bool init();
 	void exit();
-	int getKey(int delay);
-	Key getTestKey(int delay);
+	int getRawKey(int delay);
+	Key getKey(int delay);
 }

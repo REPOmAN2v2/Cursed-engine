@@ -1,6 +1,7 @@
 #include <string>
 
 #include "engine/Config/Globals.hpp"
+#include "engine/Keys.hpp"
 #include "engine/Menu/Items/MenuItemToggle.hpp"
 #include "engine/window.hpp"
 
@@ -20,9 +21,9 @@ void MenuItemToggle::draw(Window *window, bool cur, int w, int y, int x)
 	window->print("]", y, x - 1, cur ? Globals::text["highlight"] : Globals::text["normal"]);
 }
 
-void MenuItemToggle::update(int key)
+void MenuItemToggle::update(Key key)
 {
-	if (key == KEY_LEFT || key == KEY_RIGHT || key == '\n') {
+	if (key.val == Key::LEFT || key.val == Key::RIGHT || key.val == Key::ENTER) {
 		current = !current;
 	}
 }

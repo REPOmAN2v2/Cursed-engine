@@ -1,6 +1,7 @@
 #include <utility>
 
 #include "engine/Config/Globals.hpp"
+#include "engine/Keys.hpp"
 #include "engine/Menu/Items/MenuItemList.hpp"
 #include "engine/window.hpp"
 
@@ -26,15 +27,15 @@ void MenuItemList::draw(Window *window, bool cur, int w, int y, int x)
 	window->print(opt, y, w - opt.size(), cur ? Globals::text["highlight"] : Globals::text["normal"]);
 }
 
-void MenuItemList::update(int key)
+void MenuItemList::update(Key key)
 {
-	if (key == KEY_LEFT) {
+	if (key.val == Key::LEFT) {
 		if (index != 0) {
 			--index;
 		} else {
 			index = list.size() - 1;
 		}
-	} else if (key == KEY_RIGHT) {
+	} else if (key.val == Key::RIGHT) {
 		if ((index + 1) < list.size()){ 
 			++index;
 		} else {

@@ -3,6 +3,7 @@
 #include <string>
 
 class Window;
+class Key;
 
 class MenuItem
 {
@@ -18,7 +19,7 @@ public:
 	MenuItem(const char *label, unsigned id, MenuItem::Type type);
 	virtual ~MenuItem() {};
 	virtual void draw(Window *window, bool cur, int w, int y, int x);
-	virtual void update(int) {};
+	virtual void update(Key);
 	virtual void reset() {};
 
 	unsigned id;

@@ -1,5 +1,6 @@
 #include <algorithm>
 
+#include "engine/Keys.hpp"
 #include "engine/ncurses.hpp"
 #include "engine/Config/Globals.hpp"
 #include "engine/Menu/MenuData.hpp"
@@ -206,30 +207,30 @@ void MenuData::draw(Window *window)
 
 void MenuData::update()
 {
-	int key = Ncurses::getKey(-1);
+	Key key = Ncurses::getKey(-1);
 	selected = nullptr;
 
-	switch (key) {
-		case KEY_DOWN:
+	switch (key.val) {
+		case Key::DOWN:
 			nextItem();
 		break;
 
-		case KEY_UP:
+		case Key::UP:
 			prevItem();
 		break;
 
-		case KEY_PPAGE:
+		case Key::PPAGE:
 			firstItem();
 		break;
 
-		case KEY_NPAGE:
+		case Key::NPAGE:
 			lastItem();
 		break;
 
-		case ERR:
+		case Key::UNKNOWN:
 		break;
 
-		case '\n':
+		case Key::ENTER:
 			selected = current; 
 			// fallthrough
 		default:
